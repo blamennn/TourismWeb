@@ -1,0 +1,2069 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8" />
+  <title>SIBUGNGARI - Discover Zamboanga Sibugay</title>
+  <link rel="icon" type="image/png" href="Images/LOGO.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Outfit:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet" />
+  <style>
+    :root {
+      --brown: #7a3b10;
+      --gold: #d4940a;
+      --gold-lt: #f0b429;
+      --dark: #1a0d05;
+      --cream: #f9f5f0;
+      --gray: #f2ede8;
+      --text: #1e1209;
+      --soft: #6b5444;
+      --teal: #1a9a7a;
+      --teal-lt: #22b890;
+      --nav-h: 64px;
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
+    }
+
+    body {
+      font-family: 'Outfit', sans-serif;
+      background: #fff;
+      color: var(--text);
+      overflow-x: hidden;
+    }
+
+    a {
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    /* ══ NAVBAR ══ */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 999;
+      height: var(--nav-h);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 clamp(16px, 4vw, 40px);
+      background: rgba(255, 255, 255, 0.97);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+      box-shadow: 0 2px 14px rgba(0, 0, 0, 0.06);
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-shrink: 0;
+    }
+
+    .nav-logo img {
+      height: 36px;
+      width: 36px;
+      object-fit: contain;
+      border-radius: 50%;
+    }
+
+    .nav-brand {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.1rem, 3vw, 1.5rem);
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .nav-brand .s {
+      color: var(--gold);
+    }
+
+    .nav-brand .n {
+      color: var(--dark);
+    }
+
+    /* Desktop nav links */
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .nav-links a {
+      font-size: clamp(0.75rem, 1.2vw, 0.85rem);
+      font-weight: 500;
+      color: #555;
+      padding: 7px 12px;
+      border-radius: 6px;
+      transition: all .18s;
+      white-space: nowrap;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--brown);
+      background: rgba(122, 59, 16, 0.07);
+    }
+
+    .nav-links a.moto-anchor {
+      background: var(--teal);
+      color: #fff;
+      border-radius: 20px;
+      font-weight: 600;
+      padding: 7px 16px;
+      margin-left: 4px;
+    }
+
+    .nav-links a.moto-anchor:hover {
+      background: var(--teal-lt);
+      color: #fff;
+    }
+
+    /* Hamburger button */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width: 40px;
+      height: 40px;
+      gap: 5px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 6px;
+      border-radius: 6px;
+      transition: background .18s;
+    }
+
+    .hamburger:hover {
+      background: var(--gray);
+    }
+
+    .hamburger span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: var(--text);
+      border-radius: 2px;
+      transition: transform .3s, opacity .3s;
+      transform-origin: center;
+    }
+
+    .hamburger.open span:nth-child(1) {
+      transform: translateY(7px) rotate(45deg);
+    }
+
+    .hamburger.open span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .hamburger.open span:nth-child(3) {
+      transform: translateY(-7px) rotate(-45deg);
+    }
+
+    /* Mobile nav drawer */
+    .mobile-nav {
+      display: none;
+      position: fixed;
+      top: var(--nav-h);
+      left: 0;
+      right: 0;
+      z-index: 998;
+      background: rgba(255, 255, 255, 0.98);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+      flex-direction: column;
+      padding: 16px;
+      gap: 4px;
+      transform: translateY(-10px);
+      opacity: 0;
+      transition: transform .25s, opacity .25s;
+    }
+
+    .mobile-nav.open {
+      display: flex;
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    .mobile-nav a {
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: var(--text);
+      padding: 12px 16px;
+      border-radius: 8px;
+      transition: background .18s;
+    }
+
+    .mobile-nav a:hover,
+    .mobile-nav a.active {
+      background: var(--gray);
+      color: var(--brown);
+    }
+
+    .mobile-nav a.moto-anchor {
+      background: var(--teal);
+      color: #fff;
+      border-radius: 8px;
+      font-weight: 600;
+      margin-top: 6px;
+      text-align: center;
+    }
+
+    .mobile-nav a.moto-anchor:hover {
+      background: var(--teal-lt);
+    }
+
+    /* ══ HERO ══ */
+    .hero {
+      position: relative;
+      min-height: 100svh;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      margin-top: var(--nav-h);
+      background: url('Images/Background.jpg') center center / cover no-repeat;
+    }
+
+    .hero-fb {
+      position: absolute;
+      inset: 0;
+      background: url('Images/Background.jpg') center center / cover no-repeat;
+      z-index: 0;
+    }
+
+    .hero-ov {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      background: linear-gradient(to right, rgba(10, 5, 2, .88) 0%, rgba(10, 5, 2, .5) 55%, rgba(10, 5, 2, .12) 100%);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      padding: 40px clamp(20px, 6vw, 72px);
+      max-width: min(700px, 90vw);
+      padding-bottom: 140px;
+      /* room for strip */
+    }
+
+    .hero-eyebrow {
+      font-size: clamp(0.65rem, 1.5vw, 0.75rem);
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: var(--gold-lt);
+      font-weight: 600;
+      margin-bottom: 14px;
+      opacity: 0;
+      animation: fadeUp .6s .2s forwards;
+    }
+
+    .hero-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.8rem, 10vw, 7.5rem);
+      font-weight: 700;
+      line-height: .95;
+      margin-bottom: 16px;
+      opacity: 0;
+      animation: fadeUp .6s .35s forwards;
+    }
+
+    .hero-title .s {
+      color: var(--gold-lt);
+    }
+
+    .hero-title .n {
+      color: #fff;
+    }
+
+    .hero-sub {
+      font-size: clamp(0.65rem, 1.4vw, 0.8rem);
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, .5);
+      margin-bottom: 14px;
+      opacity: 0;
+      animation: fadeUp .6s .5s forwards;
+    }
+
+    .hero-desc {
+      font-size: clamp(0.85rem, 1.6vw, 1rem);
+      line-height: 1.8;
+      color: rgba(255, 255, 255, .7);
+      font-weight: 300;
+      margin-bottom: 32px;
+      opacity: 0;
+      animation: fadeUp .6s .65s forwards;
+    }
+
+    .hero-btns {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      opacity: 0;
+      animation: fadeUp .6s .8s forwards;
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Hero bottom info strip */
+    .hero-strip {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 3;
+      background: rgba(255, 255, 255, .95);
+      backdrop-filter: blur(12px);
+      display: flex;
+      border-top: 3px solid var(--gold);
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+
+    .hero-strip::-webkit-scrollbar {
+      display: none;
+    }
+
+    .strip-item {
+      flex: 1;
+      min-width: 140px;
+      padding: clamp(10px, 2vw, 16px) clamp(14px, 2.5vw, 24px);
+      border-right: 1px solid rgba(0, 0, 0, .07);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      cursor: pointer;
+      transition: background .18s;
+    }
+
+    .strip-item:hover {
+      background: var(--cream);
+    }
+
+    .strip-item:last-child {
+      border-right: none;
+    }
+
+    .strip-icon {
+      font-size: clamp(1.3rem, 2.5vw, 1.7rem);
+      flex-shrink: 0;
+    }
+
+    .strip-lbl {
+      font-size: clamp(0.58rem, 1vw, 0.68rem);
+      text-transform: uppercase;
+      letter-spacing: .1em;
+      color: var(--soft);
+      font-weight: 600;
+    }
+
+    .strip-val {
+      font-size: clamp(0.75rem, 1.3vw, 0.88rem);
+      font-weight: 700;
+      color: var(--text);
+      margin-top: 2px;
+    }
+
+    /* ══ BUTTONS ══ */
+    .btn-gold {
+      display: inline-block;
+      background: var(--gold);
+      color: #fff;
+      font-weight: 600;
+      font-size: clamp(0.8rem, 1.5vw, 0.9rem);
+      padding: clamp(10px, 2vw, 13px) clamp(18px, 3vw, 28px);
+      border-radius: 4px;
+      transition: all .2s;
+      box-shadow: 0 4px 20px rgba(212, 148, 10, .3);
+    }
+
+    .btn-gold:hover {
+      background: var(--gold-lt);
+      color: var(--dark);
+      transform: translateY(-2px);
+    }
+
+    .btn-ghost {
+      display: inline-block;
+      background: transparent;
+      color: #fff;
+      font-weight: 500;
+      font-size: clamp(0.8rem, 1.5vw, 0.9rem);
+      padding: clamp(9px, 2vw, 12px) clamp(16px, 3vw, 26px);
+      border-radius: 4px;
+      border: 1.5px solid rgba(255, 255, 255, .4);
+      transition: all .2s;
+    }
+
+    .btn-ghost:hover {
+      border-color: var(--gold-lt);
+      color: var(--gold-lt);
+    }
+
+    .btn-teal {
+      display: inline-block;
+      background: var(--teal);
+      color: #fff;
+      font-weight: 600;
+      font-size: clamp(0.8rem, 1.5vw, 0.9rem);
+      padding: clamp(10px, 2vw, 13px) clamp(18px, 3vw, 28px);
+      border-radius: 4px;
+      transition: all .2s;
+    }
+
+    .btn-teal:hover {
+      background: var(--teal-lt);
+      transform: translateY(-2px);
+    }
+
+    .btn-dark {
+      display: inline-block;
+      background: var(--dark);
+      color: #fff;
+      font-weight: 600;
+      font-size: clamp(0.8rem, 1.4vw, 0.88rem);
+      padding: clamp(9px, 2vw, 11px) clamp(16px, 2.5vw, 24px);
+      border-radius: 4px;
+      transition: all .2s;
+    }
+
+    .btn-dark:hover {
+      background: var(--brown);
+    }
+
+    /* ══ SECTION SHELLS ══ */
+    .sec {
+      padding: clamp(48px, 8vw, 80px) clamp(16px, 5vw, 40px);
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .sec-full {
+      padding: clamp(48px, 8vw, 80px) clamp(16px, 5vw, 40px);
+    }
+
+    .sec-hdr {
+      text-align: center;
+      margin-bottom: clamp(32px, 5vw, 52px);
+    }
+
+    .sec-label {
+      font-size: clamp(0.65rem, 1.2vw, 0.72rem);
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .sec-label.tl {
+      color: var(--teal);
+    }
+
+    .sec-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.7rem, 4vw, 2.8rem);
+      font-weight: 700;
+      color: var(--text);
+      line-height: 1.2;
+      margin-bottom: 14px;
+    }
+
+    .sec-title.wht {
+      color: #fff;
+    }
+
+    .sec-line {
+      width: 48px;
+      height: 3px;
+      margin: 0 auto;
+      background: linear-gradient(to right, var(--gold), var(--brown));
+      border-radius: 2px;
+    }
+
+    .sec-line.tl {
+      background: linear-gradient(to right, var(--teal), #0d6b55);
+    }
+
+    .sec-desc {
+      text-align: center;
+      color: var(--soft);
+      font-size: clamp(0.85rem, 1.5vw, 0.95rem);
+      max-width: 660px;
+      margin: 18px auto 0;
+      line-height: 1.8;
+    }
+
+    /* ══ WHY VISIT ══ */
+    .highlights-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+    }
+
+    .hl-card {
+      background: #fff;
+      border-radius: 14px;
+      padding: clamp(20px, 3vw, 32px) clamp(16px, 2.5vw, 24px);
+      text-align: center;
+      box-shadow: 0 2px 18px rgba(139, 69, 19, .07);
+      border: 1px solid rgba(139, 69, 19, .06);
+      transition: transform .25s, box-shadow .25s;
+    }
+
+    .hl-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 32px rgba(139, 69, 19, .12);
+    }
+
+    .hl-icon {
+      font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+      margin-bottom: 14px;
+    }
+
+    .hl-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1rem, 1.8vw, 1.1rem);
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 10px;
+    }
+
+    .hl-desc {
+      font-size: clamp(0.78rem, 1.3vw, 0.86rem);
+      color: var(--soft);
+      line-height: 1.7;
+    }
+
+    /* ══ SPOTS GRID ══ */
+    .spots-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+    }
+
+    .spot-card {
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, .09);
+      background: #fff;
+      transition: transform .25s, box-shadow .25s;
+    }
+
+    .spot-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 14px 36px rgba(0, 0, 0, .15);
+    }
+
+    .spot-img {
+      height: clamp(160px, 22vw, 210px);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 4rem;
+    }
+
+    .spot-img img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .spot-img-ov {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0, 0, 0, .45) 0%, transparent 55%);
+    }
+
+    .spot-tag {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      z-index: 2;
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      padding: 4px 11px;
+      border-radius: 3px;
+      color: #fff;
+    }
+
+    .spot-body {
+      padding: clamp(14px, 2.5vw, 20px) clamp(16px, 3vw, 22px);
+    }
+
+    .spot-loc {
+      font-size: clamp(0.7rem, 1.2vw, 0.76rem);
+      color: var(--gold);
+      font-weight: 600;
+      margin-bottom: 5px;
+    }
+
+    .spot-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1rem, 2vw, 1.2rem);
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 8px;
+    }
+
+    .spot-desc {
+      font-size: clamp(0.78rem, 1.3vw, 0.85rem);
+      color: var(--soft);
+      line-height: 1.65;
+      margin-bottom: 16px;
+    }
+
+    .spot-link {
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--brown);
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      transition: gap .18s, color .18s;
+    }
+
+    .spot-link:hover {
+      gap: 8px;
+      color: var(--gold);
+    }
+
+    /* ══ VIDEO SECTION ══ */
+    .video-section {
+      background: var(--dark);
+      padding: clamp(48px, 8vw, 80px) clamp(16px, 5vw, 40px);
+    }
+
+    .video-wrapper {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .video-embed-container {
+      position: relative;
+      width: 100%;
+      padding-bottom: 56.25%;
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, .5);
+      border: 2px solid rgba(212, 148, 10, .3);
+    }
+
+    .video-embed-container iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    .video-caption {
+      text-align: center;
+      margin-top: 20px;
+      color: rgba(255, 255, 255, .4);
+      font-size: 0.82rem;
+      letter-spacing: .05em;
+    }
+
+    /* ══ WEATHER WIDGET ══ */
+    .weather-section {
+      background: linear-gradient(135deg, #0a2a1a 0%, #1a4a30 60%, #0d3a24 100%);
+      padding: clamp(40px, 7vw, 70px) clamp(16px, 5vw, 40px);
+    }
+
+    .weather-wrapper {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .weather-widget-box {
+      background: rgba(255, 255, 255, .06);
+      border: 1px solid rgba(255, 255, 255, .12);
+      border-radius: 16px;
+      padding: clamp(20px, 4vw, 36px);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 24px;
+      align-items: stretch;
+    }
+
+    .weather-main {
+      flex: 1;
+      min-width: 220px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .weather-city {
+      font-size: clamp(0.65rem, 1.2vw, 0.72rem);
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: #5ee0b0;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+
+    .weather-location-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.4rem, 3vw, 2rem);
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 4px;
+    }
+
+    .weather-temp-row {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-top: 10px;
+    }
+
+    .weather-temp {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(3rem, 8vw, 5rem);
+      font-weight: 700;
+      color: var(--gold-lt);
+      line-height: 1;
+    }
+
+    .weather-temp-unit {
+      font-size: 1.5rem;
+      color: rgba(255, 255, 255, .5);
+      align-self: flex-start;
+      margin-top: 8px;
+    }
+
+    .weather-condition {
+      color: rgba(255, 255, 255, .6);
+      font-size: clamp(0.85rem, 1.5vw, 0.95rem);
+      margin-top: 8px;
+    }
+
+    .weather-icon-big {
+      font-size: clamp(3rem, 7vw, 4.5rem);
+      margin-bottom: 6px;
+    }
+
+    .weather-details {
+      flex: 1.5;
+      min-width: 240px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+      gap: 12px;
+      align-content: start;
+    }
+
+    .weather-detail-item {
+      background: rgba(255, 255, 255, .05);
+      border-radius: 10px;
+      padding: 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .wd-label {
+      font-size: 0.68rem;
+      text-transform: uppercase;
+      letter-spacing: .1em;
+      color: rgba(255, 255, 255, .4);
+    }
+
+    .wd-value {
+      font-size: clamp(0.9rem, 1.6vw, 1rem);
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .weather-forecast {
+      flex: 2;
+      min-width: 300px;
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      align-items: flex-start;
+    }
+
+    .forecast-day {
+      flex: 1;
+      min-width: 60px;
+      background: rgba(255, 255, 255, .04);
+      border: 1px solid rgba(255, 255, 255, .08);
+      border-radius: 10px;
+      padding: 12px 8px;
+      text-align: center;
+      transition: background .2s;
+    }
+
+    .forecast-day:hover {
+      background: rgba(255, 255, 255, .09);
+    }
+
+    .fd-day {
+      font-size: 0.68rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      color: rgba(255, 255, 255, .4);
+      margin-bottom: 8px;
+    }
+
+    .fd-icon {
+      font-size: 1.4rem;
+      margin-bottom: 6px;
+    }
+
+    .fd-hi {
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .fd-lo {
+      font-size: 0.75rem;
+      color: rgba(255, 255, 255, .4);
+    }
+
+    .weather-loading {
+      color: rgba(255, 255, 255, .5);
+      font-size: 0.9rem;
+      text-align: center;
+      padding: 20px;
+    }
+
+    .weather-error {
+      color: rgba(255, 100, 100, .7);
+      font-size: 0.85rem;
+      text-align: center;
+      padding: 10px;
+    }
+
+    .weather-last-updated {
+      color: rgba(255, 255, 255, .25);
+      font-size: 0.7rem;
+      text-align: right;
+      margin-top: 12px;
+      width: 100%;
+    }
+
+    /* ══ IPIL BAND ══ */
+    .ipil-band {
+      position: relative;
+      min-height: clamp(280px, 40vw, 400px);
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+    }
+
+    .ipil-fb {
+      position: absolute;
+      inset: 0;
+      background: url('Images/Rotunda.jpg') center center / cover no-repeat;
+    }
+
+    .ipil-ov {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to left, rgba(10, 5, 2, .88) 0%, rgba(10, 5, 2, .4) 55%, transparent 100%);
+    }
+
+    .ipil-cnt {
+      position: relative;
+      z-index: 2;
+      padding: clamp(32px, 6vw, 64px) clamp(20px, 6vw, 72px);
+      max-width: min(520px, 90vw);
+      text-align: right;
+    }
+
+    .ipil-lbl {
+      font-size: 0.72rem;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--gold-lt);
+      font-weight: 700;
+      margin-bottom: 14px;
+    }
+
+    .ipil-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.5rem, 3.5vw, 3rem);
+      font-weight: 700;
+      color: #fff;
+      line-height: 1.2;
+      margin-bottom: 16px;
+    }
+
+    .ipil-desc {
+      color: rgba(255, 255, 255, .65);
+      font-size: clamp(0.82rem, 1.5vw, 0.92rem);
+      line-height: 1.8;
+      margin-bottom: 28px;
+    }
+
+    /* ══ MOTOURISM INTRO BAND ══ */
+    .moto-intro-band {
+      position: relative;
+      min-height: clamp(300px, 45vw, 420px);
+      display: flex;
+      align-items: center;
+    }
+
+    .moto-ib-fb {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(120deg, #051008, #0d2a1a 55%, #1a5a30);
+    }
+
+    .moto-ib-ov {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to right, rgba(3, 12, 8, .92) 0%, rgba(3, 12, 8, .5) 55%, rgba(3, 12, 8, .1) 100%);
+    }
+
+    .moto-ib-cnt {
+      position: relative;
+      z-index: 2;
+      padding: clamp(32px, 6vw, 64px) clamp(20px, 6vw, 72px);
+      max-width: min(680px, 90vw);
+    }
+
+    .moto-ib-lbl {
+      font-size: 0.72rem;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: #5ee0b0;
+      font-weight: 700;
+      margin-bottom: 14px;
+    }
+
+    .moto-ib-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.6rem, 4vw, 3.2rem);
+      font-weight: 700;
+      color: #fff;
+      line-height: 1.15;
+      margin-bottom: 18px;
+    }
+
+    .moto-ib-desc {
+      color: rgba(255, 255, 255, .65);
+      font-size: clamp(0.85rem, 1.5vw, 0.95rem);
+      line-height: 1.8;
+      margin-bottom: 28px;
+    }
+
+    .moto-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 30px;
+    }
+
+    .mpill {
+      background: rgba(255, 255, 255, .1);
+      border: 1px solid rgba(255, 255, 255, .2);
+      color: #fff;
+      font-size: clamp(0.72rem, 1.3vw, 0.8rem);
+      font-weight: 500;
+      padding: 7px 14px;
+      border-radius: 30px;
+    }
+
+    /* ══ MOTOURISM ROUTES SECTION ══ */
+    .bg-gray {
+      background: var(--gray);
+    }
+
+    .route-tabs {
+      display: flex;
+      justify-content: center;
+      gap: 14px;
+      margin-bottom: 48px;
+      flex-wrap: wrap;
+    }
+
+    .rtab {
+      padding: 12px 28px;
+      border-radius: 6px;
+      border: 2px solid #ccc;
+      background: #fff;
+      color: var(--soft);
+      font-size: clamp(0.8rem, 1.4vw, 0.88rem);
+      font-weight: 600;
+      cursor: pointer;
+      transition: all .2s;
+      font-family: 'Outfit', sans-serif;
+    }
+
+    .rtab:hover {
+      border-color: var(--teal);
+      color: var(--teal);
+    }
+
+    .rtab.active {
+      background: var(--teal);
+      color: #fff;
+      border-color: var(--teal);
+    }
+
+    .route-panel {
+      display: none;
+    }
+
+    .route-panel.active {
+      display: block;
+    }
+
+    .route-head {
+      background: linear-gradient(135deg, #0a2018 0%, #1a4a30 60%, #2a7a50 100%);
+      border-radius: 14px;
+      padding: clamp(20px, 4vw, 32px) clamp(16px, 4vw, 40px);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 20px;
+      margin-bottom: 36px;
+      box-shadow: 0 8px 32px rgba(10, 32, 24, .2);
+    }
+
+    .rh-from {
+      font-size: 0.72rem;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      color: #5ee0b0;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+
+    .rh-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.3rem, 3vw, 1.8rem);
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 4px;
+    }
+
+    .rh-sub {
+      color: rgba(255, 255, 255, .5);
+      font-size: clamp(0.78rem, 1.4vw, 0.88rem);
+    }
+
+    .rh-stats {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .rh-stat-val {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.3rem, 3vw, 1.8rem);
+      font-weight: 700;
+      color: var(--gold-lt);
+      line-height: 1;
+    }
+
+    .rh-stat-lbl {
+      font-size: 0.7rem;
+      color: rgba(255, 255, 255, .4);
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      margin-top: 3px;
+    }
+
+    /* Stops */
+    .stops-list {
+      position: relative;
+      padding-left: 24px;
+    }
+
+    .stops-list::before {
+      content: '';
+      position: absolute;
+      left: 20px;
+      top: 22px;
+      bottom: 22px;
+      width: 2px;
+      background: linear-gradient(to bottom, var(--teal), rgba(26, 154, 122, .1));
+    }
+
+    .stop-item {
+      display: flex;
+      gap: 22px;
+      margin-bottom: 24px;
+      position: relative;
+    }
+
+    .stop-dot-col {
+      flex-shrink: 0;
+      width: 42px;
+      height: 42px;
+      position: relative;
+      z-index: 2;
+      margin-left: -3px;
+    }
+
+    .stop-dot {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: var(--teal);
+      color: #fff;
+      font-weight: 800;
+      font-size: 0.92rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 3px 10px rgba(26, 154, 122, .35);
+      border: 3px solid #fff;
+    }
+
+    .stop-dot.first {
+      background: linear-gradient(135deg, var(--gold), var(--gold-lt));
+      color: var(--dark);
+      box-shadow: 0 3px 10px rgba(212, 148, 10, .4);
+    }
+
+    .stop-card {
+      flex: 1;
+      background: #fff;
+      border-radius: 10px;
+      padding: clamp(14px, 2.5vw, 20px) clamp(14px, 3vw, 22px);
+      box-shadow: 0 3px 14px rgba(0, 0, 0, .07);
+      border-left: 4px solid var(--teal);
+      transition: border-color .2s, box-shadow .2s;
+    }
+
+    .stop-card:hover {
+      border-left-color: var(--gold);
+      box-shadow: 0 6px 22px rgba(0, 0, 0, .11);
+    }
+
+    .stop-card.gold-stop {
+      border-left-color: var(--gold);
+      background: linear-gradient(135deg, #fffbf0, #fff8e0);
+    }
+
+    .stop-badge {
+      display: inline-block;
+      font-size: 0.68rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      padding: 3px 10px;
+      border-radius: 3px;
+      margin-bottom: 7px;
+      color: #fff;
+    }
+
+    .sb-first {
+      background: var(--gold);
+    }
+
+    .sb-nature {
+      background: #2e7d32;
+    }
+
+    .sb-heritage {
+      background: #6d3a00;
+    }
+
+    .sb-culture {
+      background: #6a1b9a;
+    }
+
+    .sb-beach {
+      background: #1565c0;
+    }
+
+    .sb-ecofarm {
+      background: #388e3c;
+    }
+
+    .sb-end {
+      background: #37474f;
+    }
+
+    .stop-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1rem, 2vw, 1.2rem);
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 4px;
+    }
+
+    .stop-loc {
+      font-size: 0.76rem;
+      color: var(--gold);
+      font-weight: 600;
+      margin-bottom: 9px;
+    }
+
+    .stop-desc {
+      font-size: clamp(0.8rem, 1.4vw, 0.88rem);
+      color: var(--soft);
+      line-height: 1.7;
+      margin-bottom: 10px;
+    }
+
+    .stop-tip {
+      background: var(--gray);
+      border-radius: 6px;
+      padding: 9px 13px;
+      font-size: clamp(0.74rem, 1.2vw, 0.81rem);
+      color: var(--soft);
+      line-height: 1.6;
+    }
+
+    .stop-tip strong {
+      color: var(--brown);
+    }
+
+    /* ══ RIDER TIPS ══ */
+    .bg-dark {
+      background: var(--dark);
+    }
+
+    .tips-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .tip-card {
+      background: rgba(255, 255, 255, .05);
+      border: 1px solid rgba(255, 255, 255, .08);
+      border-radius: 12px;
+      padding: clamp(18px, 3vw, 26px) clamp(16px, 2.5vw, 22px);
+      transition: background .2s, border-color .2s;
+    }
+
+    .tip-card:hover {
+      background: rgba(255, 255, 255, .09);
+      border-color: rgba(212, 148, 10, .3);
+    }
+
+    .tip-icon {
+      font-size: clamp(1.5rem, 3vw, 2rem);
+      margin-bottom: 12px;
+    }
+
+    .tip-title {
+      font-weight: 700;
+      color: #fff;
+      font-size: clamp(0.88rem, 1.5vw, 0.98rem);
+      margin-bottom: 8px;
+    }
+
+    .tip-text {
+      font-size: clamp(0.78rem, 1.3vw, 0.86rem);
+      color: rgba(255, 255, 255, .5);
+      line-height: 1.7;
+    }
+
+    /* ══ STAYCATIONS ══ */
+    .stay-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 24px;
+    }
+
+    .stay-card {
+      background: #fff;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 18px rgba(0, 0, 0, .08);
+      transition: transform .25s, box-shadow .25s;
+    }
+
+    .stay-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 32px rgba(0, 0, 0, .14);
+    }
+
+    .stay-img {
+      height: clamp(140px, 18vw, 170px);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3.5rem;
+    }
+
+    .stay-img img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .stay-type {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      background: rgba(255, 255, 255, .92);
+      color: var(--brown);
+      font-size: 0.67rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      padding: 3px 10px;
+      border-radius: 3px;
+    }
+
+    .stay-price {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: var(--gold);
+      color: #fff;
+      font-size: 0.67rem;
+      font-weight: 700;
+      padding: 3px 10px;
+      border-radius: 3px;
+    }
+
+    .stay-body {
+      padding: clamp(12px, 2.5vw, 18px) clamp(14px, 2.5vw, 20px);
+    }
+
+    .stay-stars {
+      color: var(--gold);
+      font-size: 0.82rem;
+      margin-bottom: 5px;
+    }
+
+    .stay-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1rem, 1.8vw, 1.15rem);
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 3px;
+    }
+
+    .stay-loc {
+      font-size: 0.76rem;
+      color: var(--soft);
+      margin-bottom: 9px;
+    }
+
+    .stay-desc {
+      font-size: clamp(0.78rem, 1.3vw, 0.84rem);
+      color: var(--soft);
+      line-height: 1.65;
+      margin-bottom: 12px;
+    }
+
+    .stay-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+    }
+
+    .stag {
+      background: var(--gray);
+      color: var(--brown);
+      font-size: 0.72rem;
+      font-weight: 600;
+      padding: 3px 10px;
+      border-radius: 20px;
+    }
+
+    /* ══ LOCAL TRAVELLERS ══ */
+    .bg-cream {
+      background: var(--cream);
+    }
+
+    .trav-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 26px;
+    }
+
+    .trav-card {
+      background: #fff;
+      border-radius: 14px;
+      padding: clamp(20px, 3.5vw, 32px) clamp(18px, 3vw, 28px);
+      box-shadow: 0 4px 18px rgba(0, 0, 0, .07);
+      border-top: 4px solid var(--brown);
+    }
+
+    .trav-icon {
+      font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+      margin-bottom: 14px;
+    }
+
+    .trav-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.1rem, 2.5vw, 1.45rem);
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 8px;
+    }
+
+    .trav-intro {
+      font-size: clamp(0.8rem, 1.4vw, 0.88rem);
+      color: var(--soft);
+      line-height: 1.7;
+      margin-bottom: 18px;
+    }
+
+    .trav-list {
+      list-style: none;
+    }
+
+    .trav-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 11px;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--gray);
+      font-size: clamp(0.8rem, 1.4vw, 0.88rem);
+      color: #444;
+      line-height: 1.55;
+    }
+
+    .trav-list li:last-child {
+      border-bottom: none;
+    }
+
+    .trav-list li .li-i {
+      font-size: 1rem;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    /* ══ CTA BAND ══ */
+    .cta-band {
+      position: relative;
+      padding: clamp(56px, 10vw, 90px) clamp(16px, 5vw, 40px);
+      text-align: center;
+    }
+
+    .cta-fb {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, #1a0d05, #7a3b10);
+    }
+
+    .cta-ov {
+      position: absolute;
+      inset: 0;
+      background: rgba(10, 5, 2, .72);
+    }
+
+    .cta-cnt {
+      position: relative;
+      z-index: 2;
+    }
+
+    .cta-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.8rem, 4vw, 3.2rem);
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 14px;
+    }
+
+    .cta-desc {
+      color: rgba(255, 255, 255, .6);
+      font-size: clamp(0.85rem, 1.5vw, 0.98rem);
+      max-width: 500px;
+      margin: 0 auto 32px;
+      line-height: 1.8;
+    }
+
+    /* ══ FOOTER ══ */
+    .footer {
+      background: #120800;
+      padding: clamp(28px, 5vw, 40px) clamp(16px, 5vw, 40px) 24px;
+      text-align: center;
+    }
+
+    .footer-brand {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.5rem, 4vw, 2rem);
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    .footer-brand .s {
+      color: var(--gold-lt);
+    }
+
+    .footer-brand .n {
+      color: #fff;
+    }
+
+    .footer-tag {
+      color: rgba(255, 255, 255, .3);
+      font-size: clamp(0.7rem, 1.2vw, 0.8rem);
+      letter-spacing: .1em;
+      margin-bottom: 18px;
+    }
+
+    .footer-nav {
+      display: flex;
+      gap: 4px;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-bottom: 22px;
+    }
+
+    .footer-nav a {
+      color: rgba(255, 255, 255, .4);
+      font-size: clamp(0.75rem, 1.2vw, 0.82rem);
+      padding: 5px 12px;
+      border-radius: 4px;
+      transition: color .2s;
+    }
+
+    .footer-nav a:hover {
+      color: #fff;
+    }
+
+    .footer-copy {
+      color: rgba(255, 255, 255, .15);
+      font-size: clamp(0.68rem, 1.1vw, 0.75rem);
+    }
+
+    /* ══ RESPONSIVE BREAKPOINTS ══ */
+    @media (max-width: 900px) {
+      .nav-links {
+        display: none;
+      }
+
+      .hamburger {
+        display: flex;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .hero-strip {
+        flex-wrap: wrap;
+      }
+
+      .strip-item {
+        flex: 0 0 50%;
+        border-bottom: 1px solid rgba(0, 0, 0, .07);
+      }
+
+      .strip-item:nth-child(even) {
+        border-right: none;
+      }
+
+      .strip-item:nth-last-child(-n+2) {
+        border-bottom: none;
+      }
+
+      .stops-list {
+        padding-left: 0;
+      }
+
+      .stops-list::before {
+        display: none;
+      }
+
+      .stop-dot-col {
+        display: none;
+      }
+
+      .route-head {
+        flex-direction: column;
+      }
+
+      .ipil-cnt {
+        text-align: center;
+      }
+
+      .ipil-band {
+        justify-content: center;
+      }
+
+      .ipil-ov {
+        background: rgba(10, 5, 2, .7);
+      }
+    }
+
+    /* Overlay when mobile menu open */
+    .nav-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 997;
+      background: rgba(0, 0, 0, .3);
+      backdrop-filter: blur(2px);
+    }
+
+    .nav-overlay.open {
+      display: block;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ══ NAVBAR ══ -->
+  <nav class="navbar">
+    <div class="nav-logo">
+      <img src="Images/LOGO.png" alt="SIBUGNGARI" />
+      <div class="nav-brand"><span class="s">SIBUG</span><span class="n">NGARI</span></div>
+    </div>
+    <!-- Desktop links -->
+    <div class="nav-links">
+      <a href="index.html" class="active">Home</a>
+      <a href="about.html">About</a>
+      <a href="attractions.html">Attractions</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="contact.html">Contact</a>
+      <a href="#motourism" class="moto-anchor">🏍️ Motourism</a>
+    </div>
+    <!-- Hamburger (mobile) -->
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- Mobile overlay -->
+  <div class="nav-overlay" id="navOverlay"></div>
+
+  <!-- Mobile nav drawer -->
+  <nav class="mobile-nav" id="mobileNav">
+    <a href="index.html" class="active">🏠 Home</a>
+    <a href="about.html">📖 About</a>
+    <a href="attractions.html">🗺️ Attractions</a>
+    <a href="gallery.html">🖼️ Gallery</a>
+    <a href="contact.html">✉️ Contact</a>
+    <a href="#motourism" class="moto-anchor">🏍️ Motourism</a>
+  </nav>
+
+  <!-- ══ HERO ══ -->
+  <section class="hero">
+    <div class="hero-fb"></div>
+    <div class="hero-ov"></div>
+    <div class="hero-content">
+      <div class="hero-eyebrow">Welcome to</div>
+      <div class="hero-title"><span class="s">Zamboanga</span><span class="n">Sibugay</span></div>
+      <div class="hero-sub">Province of Beauty &amp; Culture</div>
+      <div class="hero-desc">A province of stunning coastlines, misty mountains, and living culture. Whether you're a
+        motourist on a scenic ride, a family seeking adventure, or a student on an educational tour — every road leads
+        somewhere beautiful.</div>
+      <div class="hero-btns">
+        <a href="attractions.html" class="btn-gold">Explore Attractions</a>
+        <a href="#motourism" class="btn-ghost">Riding Routes</a>
+      </div>
+    </div>
+    <div class="hero-strip">
+      <a href="attractions.html" class="strip-item">
+        <div>
+          <div class="strip-lbl">Top Beach</div>
+          <div class="strip-val">Buluan Island</div>
+        </div>
+      </a>
+      <a href="#motourism" class="strip-item">
+        <div>
+          <div class="strip-lbl">Motourist First Stop</div>
+          <div class="strip-val">Stonehills Farm</div>
+        </div>
+      </a>
+      <a href="attractions.html" class="strip-item">
+        <div>
+          <div class="strip-lbl">Nature Escape</div>
+          <div class="strip-val">Gacbusan Falls</div>
+        </div>
+      </a>
+      <a href="#staycations" class="strip-item">
+        <div>
+          <div class="strip-lbl">Staycations</div>
+          <div class="strip-val">Hotels, Resorts &amp; More</div>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- ══ WHY VISIT ══ -->
+  <div class="sec">
+    <div class="sec-hdr">
+      <div class="sec-label">Why Visit</div>
+      <div class="sec-title">Experience Zamboanga Sibugay</div>
+      <div class="sec-line"></div>
+    </div>
+    <div class="highlights-grid">
+      <div class="hl-card">
+        <div class="hl-icon">🌊</div>
+        <div class="hl-title">Beaches &amp; Coastlines</div>
+        <div class="hl-desc">Pristine white sand beaches and crystal-clear Moro Gulf waters — a hidden paradise for
+          beach lovers.</div>
+      </div>
+      <div class="hl-card">
+        <div class="hl-icon">🏔️</div>
+        <div class="hl-title">Mountains &amp; Nature</div>
+        <div class="hl-desc">Lush mountains, cascading waterfalls, and rich biodiversity — perfect for trekking and
+          eco-tourism.</div>
+      </div>
+      <div class="hl-card">
+        <div class="hl-icon">🏛️</div>
+        <div class="hl-title">Culture &amp; Heritage</div>
+        <div class="hl-desc">Rich Subanen culture, historical landmarks, and vibrant festivals reflect the province's
+          proud identity.</div>
+      </div>
+      <div class="hl-card">
+        <div class="hl-icon">🍽️</div>
+        <div class="hl-title">Food &amp; Cuisine</div>
+        <div class="hl-desc">Savor authentic local dishes and fresh Moro Gulf seafood that capture the true flavors of
+          Sibugay.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ TOP SPOTS ══ -->
+  <div class="sec" style="padding-top:0;">
+    <div class="sec-hdr">
+      <div class="sec-label">Tourist Spots</div>
+      <div class="sec-title">Popular Destinations</div>
+      <div class="sec-line"></div>
+    </div>
+    <div class="spots-grid">
+      <div class="spot-card">
+        <div class="spot-img" style="background:linear-gradient(135deg,#1a5276,#2e86c1);">🏝️<img
+            src="Images/Buluan.jpg" alt="Buluan Island" onerror="this.style.display='none'" />
+          <div class="spot-img-ov"></div>
+          <div class="spot-tag" style="background:rgba(26,82,118,.85);">Beach</div>
+        </div>
+        <div class="spot-body">
+          <div class="spot-loc">📍 Ipil, Zamboanga Sibugay</div>
+          <div class="spot-name">Buluan Island</div>
+          <div class="spot-desc">A pristine island paradise in the Moro Gulf with turquoise waters and powdery white
+            sand — Sibugay's crown jewel.</div><a href="attractions.html" class="spot-link">Explore →</a>
+        </div>
+      </div>
+      <div class="spot-card">
+        <div class="spot-img" style="background:linear-gradient(135deg,#1a7a4a,#145a35);">🌿<img
+            src="Images/Stonehills.jpg" alt="Stonehills Farm" onerror="this.style.display='none'" />
+          <div class="spot-img-ov"></div>
+          <div class="spot-tag" style="background:rgba(26,122,74,.85);">Eco-Farm</div>
+        </div>
+        <div class="spot-body">
+          <div class="spot-loc">📍 Tungawan, Zamboanga Sibugay</div>
+          <div class="spot-name">Stonehills Farm</div>
+          <div class="spot-desc">Rolling limestone hills and lush greenery. The top first stop for motourists from
+            Zamboanga City.</div><a href="#motourism" class="spot-link">See Route →</a>
+        </div>
+      </div>
+      <div class="spot-card">
+        <div class="spot-img" style="background:linear-gradient(135deg,#0d4f6e,#1a7a9a);"><img
+            src="Images/Malagandis.jpg" alt="Naga Falls" onerror="this.style.display='none'" />
+          <div class="spot-img-ov"></div>
+          <div class="spot-tag" style="background:rgba(13,79,110,.85);">Nature</div>
+        </div>
+        <div class="spot-body">
+          <div class="spot-loc"> Titay, Zamboanga Sibugay</div>
+          <div class="spot-name"></div>
+          <div class="spot-desc">A stunning mountain waterfall with crystal-clear water — perfect for travellers that
+            want fun.</div><a href="attractions.html" class="spot-link">Learn More →</a>
+        </div>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:40px;"><a href="attractions.html" class="btn-gold">View All Attractions</a>
+    </div>
+  </div>
+
+  <!-- ══ PROMOTIONAL VIDEO ══ -->
+  <section class="video-section" id="video">
+    <div class="video-wrapper">
+      <div class="sec-hdr">
+        <div class="sec-label tl">Discover Sibugay</div>
+        <div class="sec-title wht">Watch Our Destination Video</div>
+        <div class="sec-line tl"></div>
+        <div class="sec-desc" style="color:rgba(255,255,255,.5);">Experience the beauty of Zamboanga Sibugay through the
+          lens — from pristine beaches to misty mountain trails.</div>
+      </div>
+      <div class="video-embed-container"
+        style="display:flex;align-items:center;justify-content:center;background:#000;">
+        <img src="https://img.youtube.com/vi/qpcX6tsjV40/maxresdefault.jpg"
+          style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0.7;"
+          alt="Sibugay Promo Video" />
+        <a href="https://youtu.be/qpcX6tsjV40" target="_blank"
+          style="position:relative;z-index:2;text-decoration:none;display:flex;flex-direction:column;align-items:center;gap:16px;">
+          <div
+            style="width:80px;height:80px;background:red;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(0,0,0,0.5);">
+            <div
+              style="border-left:30px solid white;border-top:19px solid transparent;border-bottom:19px solid transparent;margin-left:8px;">
+            </div>
+          </div>
+          <span
+            style="color:#fff;font-size:0.9rem;font-weight:600;letter-spacing:.05em;background:rgba(0,0,0,0.5);padding:8px 20px;border-radius:20px;">▶
+            Watch on YouTube</span>
+        </a>
+      </div>
+
+      <!-- ══ WEATHER WIDGET ══ -->
+      <section class="weather-section" id="weather">
+        <div class="weather-wrapper">
+          <div class="sec-hdr">
+            <div class="sec-label tl">Live Forecast</div>
+            <div class="sec-title wht">Weather in Zamboanga Sibugay</div>
+            <div class="sec-line tl"></div>
+            <div class="sec-desc" style="color:rgba(255,255,255,.45);">Plan your trip with current weather conditions
+              and a 5-day forecast for the province.</div>
+          </div>
+          <div class="weather-widget-box" id="weatherWidget">
+            <div class="weather-loading" id="weatherLoading">⛅ Loading weather data…</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ══ IPIL FEATURED BAND ══ -->
+      <section class="ipil-band">
+        <div class="ipil-fb"></div>
+        <div class="ipil-ov"></div>
+        <div class="ipil-cnt">
+          <div class="ipil-lbl">Featured Destination</div>
+          <div class="ipil-title">Ipil — Heart of Zamboanga Sibugay</div>
+          <div class="ipil-desc">The provincial capital and gateway to everything the province has to offer. Commerce,
+            culture, history, and warm Filipino hospitality all in one thriving town.</div>
+          <a href="attractions.html" class="btn-gold">View All Attractions</a>
+        </div>
+      </section>
+
+      <!-- ══ MOTOURISM INTRO BAND ══ -->
+      <section class="moto-intro-band" id="motourism">
+        <div class="moto-ib-fb"></div>
+        <div class="moto-ib-ov"></div>
+        <div class="moto-ib-cnt">
+          <div class="moto-ib-lbl">Motourism</div>
+          <div class="moto-ib-title">Ride the Roads of Zamboanga Sibugay</div>
+          <div class="moto-ib-desc">We've mapped scenic riding routes from Zamboanga City and Pagadian City — complete
+            with first stop guides, pit stop recommendations, rider safety tips, and staycation options at every turn.
+          </div>
+          <div class="moto-pills">
+            <div class="mpill">📍 From Zamboanga City → Stonehills Farm</div>
+            <div class="mpill">📍 From Pagadian City → Kabasalan Bay</div>
+            <div class="mpill">🏨 6 Staycation Picks</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ══ CTA ══ -->
+      <div class="cta-band">
+        <div class="cta-fb"></div>
+        <div class="cta-ov"></div>
+        <div class="cta-cnt">
+          <div class="cta-title">Ready to Discover Sibugay?</div>
+          <div class="cta-desc">Plan your trip, map your ride, or reach out for travel assistance. Zamboanga Sibugay is
+            waiting for you.</div>
+          <a href="contact.html" class="btn-gold">Get In Touch</a>
+        </div>
+      </div>
+
+      <!-- ══ FOOTER ══ -->
+      <footer class="footer">
+        <div class="footer-brand"><span class="s">SIBUG</span><span class="n">NGARI</span></div>
+        <div class="footer-tag">Discover Zamboanga Sibugay</div>
+        <div class="footer-nav">
+          <a href="index.html">Home</a>
+          <a href="about.html">About</a>
+          <a href="attractions.html">Attractions</a>
+          <a href="gallery.html">Gallery</a>
+          <a href="contact.html">Contact</a>
+        </div>
+        <div class="footer-copy">&copy; 2026 SIBUGNGARI. All rights reserved.</div>
+      </footer>
+
+      <script>
+        /* ══ HAMBURGER MENU ══ */
+        const hamburger = document.getElementById('hamburger');
+        const mobileNav = document.getElementById('mobileNav');
+        const navOverlay = document.getElementById('navOverlay');
+
+        function toggleMenu(open) {
+          hamburger.classList.toggle('open', open);
+          hamburger.setAttribute('aria-expanded', open);
+          navOverlay.classList.toggle('open', open);
+          if (open) {
+            mobileNav.classList.add('open');
+          } else {
+            mobileNav.classList.remove('open');
+          }
+        }
+
+        hamburger.addEventListener('click', () => {
+          const isOpen = hamburger.classList.contains('open');
+          toggleMenu(!isOpen);
+        });
+
+        navOverlay.addEventListener('click', () => toggleMenu(false));
+
+        // Close mobile nav when a link is clicked
+        mobileNav.querySelectorAll('a').forEach(link => {
+          link.addEventListener('click', () => toggleMenu(false));
+        });
+
+        /* ══ ROUTE TABS ══ */
+        function switchRoute(id, btn) {
+          document.querySelectorAll('.rtab').forEach(b => b.classList.remove('active'));
+          document.querySelectorAll('.route-panel').forEach(p => p.classList.remove('active'));
+          btn.classList.add('active');
+          document.getElementById(id).classList.add('active');
+        }
+
+        /* ══ WEATHER WIDGET ══
+           Uses Open-Meteo (free, no API key needed).
+           Coordinates: Ipil, Zamboanga Sibugay ≈ 7.7856°N, 122.5892°E
+        */
+        async function loadWeather() {
+          const widget = document.getElementById('weatherWidget');
+          const loading = document.getElementById('weatherLoading');
+
+          const lat = 7.7856;
+          const lon = 122.5892;
+          const city = 'Ipil, Zamboanga Sibugay';
+
+          const weatherCodeMap = {
+            0: '☀️', 1: '🌤️', 2: '⛅', 3: '☁️',
+            45: '🌫️', 48: '🌫️',
+            51: '🌦️', 53: '🌦️', 55: '🌧️',
+            61: '🌧️', 63: '🌧️', 65: '🌧️',
+            71: '❄️', 73: '❄️', 75: '❄️',
+            80: '🌦️', 81: '🌧️', 82: '⛈️',
+            95: '⛈️', 96: '⛈️', 99: '⛈️'
+          };
+          const weatherDescMap = {
+            0: 'Clear Sky', 1: 'Mostly Clear', 2: 'Partly Cloudy', 3: 'Overcast',
+            45: 'Foggy', 48: 'Foggy',
+            51: 'Light Drizzle', 53: 'Drizzle', 55: 'Heavy Drizzle',
+            61: 'Light Rain', 63: 'Moderate Rain', 65: 'Heavy Rain',
+            71: 'Light Snow', 73: 'Moderate Snow', 75: 'Heavy Snow',
+            80: 'Showers', 81: 'Heavy Showers', 82: 'Violent Showers',
+            95: 'Thunderstorm', 96: 'Thunderstorm w/ Hail', 99: 'Heavy Thunderstorm'
+          };
+          const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+
+          try {
+            const url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current=temperature_2m,relative_humidity_2m,apparent_temperature,weather_code,wind_speed_10m,uv_index&daily=weather_code,temperature_2m_max,temperature_2m_min&timezone=Asia%2FManila&forecast_days=6`;
+            const res = await fetch(url);
+            const data = await res.json();
+
+            const cur = data.current;
+            const daily = data.daily;
+            const code = cur.weather_code;
+            const icon = weatherCodeMap[code] || '🌡️';
+            const desc = weatherDescMap[code] || 'Unknown';
+            const temp = Math.round(cur.temperature_2m);
+            const feels = Math.round(cur.apparent_temperature);
+            const humid = cur.relative_humidity_2m;
+            const wind = Math.round(cur.wind_speed_10m);
+            const uv = cur.uv_index;
+            const now = new Date();
+
+            // Build forecast days HTML (skip today = index 0)
+            let forecastHTML = '';
+            for (let i = 1; i <= 5; i++) {
+              const d = new Date(daily.time[i]);
+              const dc = daily.weather_code[i];
+              const di = weatherCodeMap[dc] || '🌡️';
+              const hi = Math.round(daily.temperature_2m_max[i]);
+              const lo = Math.round(daily.temperature_2m_min[i]);
+              forecastHTML += `
+            <div class="forecast-day">
+              <div class="fd-day">${days[d.getDay()]}</div>
+              <div class="fd-icon">${di}</div>
+              <div class="fd-hi">${hi}°</div>
+              <div class="fd-lo">${lo}°</div>
+            </div>`;
+            }
+
+            widget.innerHTML = `
+          <div class="weather-main">
+            <div class="weather-city">📍 Live Weather</div>
+            <div class="weather-location-name">${city}</div>
+            <div class="weather-icon-big">${icon}</div>
+            <div class="weather-temp-row">
+              <div class="weather-temp">${temp}</div>
+              <div class="weather-temp-unit">°C</div>
+            </div>
+            <div class="weather-condition">${desc}</div>
+          </div>
+          <div class="weather-details">
+            <div class="weather-detail-item"><div class="wd-label">Feels Like</div><div class="wd-value">${feels}°C</div></div>
+            <div class="weather-detail-item"><div class="wd-label">Humidity</div><div class="wd-value">${humid}%</div></div>
+            <div class="weather-detail-item"><div class="wd-label">Wind</div><div class="wd-value">${wind} km/h</div></div>
+            <div class="weather-detail-item"><div class="wd-label">UV Index</div><div class="wd-value">${uv}</div></div>
+          </div>
+          <div class="weather-forecast">${forecastHTML}</div>
+          <div class="weather-last-updated">Updated: ${now.toLocaleTimeString('en-PH', { hour: '2-digit', minute: '2-digit' })}</div>
+        `;
+          } catch (err) {
+            widget.innerHTML = `
+          <div class="weather-main">
+            <div class="weather-city">📍 Ipil, Zamboanga Sibugay</div>
+            <div class="weather-location-name">Weather Data</div>
+            <div class="weather-icon-big">⛅</div>
+            <div class="weather-condition">Typically warm & tropical</div>
+          </div>
+          <div class="weather-details">
+            <div class="weather-detail-item"><div class="wd-label">Avg Temp</div><div class="wd-value">28–32°C</div></div>
+            <div class="weather-detail-item"><div class="wd-label">Humidity</div><div class="wd-value">75–85%</div></div>
+            <div class="weather-detail-item"><div class="wd-label">Climate</div><div class="wd-value">Tropical</div></div>
+            <div class="weather-detail-item"><div class="wd-label">Best Visit</div><div class="wd-value">Nov–Apr</div></div>
+          </div>
+          <div style="width:100%;padding-top:10px;">
+            <div class="weather-error">⚠️ Live data unavailable — showing typical climate info. Please check your internet connection.</div>
+          </div>
+        `;
+          }
+        }
+
+        loadWeather();
+      </script>
+
+</body>
+
+</html>

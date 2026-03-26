@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact - SIBUGNGARI</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --brown:   #7a3b10;
+      --gold:    #d4940a;
+      --gold-lt: #f0b429;
+      --dark:    #1a0d05;
+      --cream:   #Faf6ef;
+      --gray:    #f2ede8;
+      --text:    #332a24;
+      --soft:    #6b5444;
+      --red:     #CC5543;
+      --green:   #719E5D;
+      --input-bg:#E9DFC6;
+      --faq-bg:  #2c231e;
+      --faq-item:#3b2e27;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Outfit', sans-serif; background: var(--cream); color: var(--text); overflow-x: hidden; }
+    a { text-decoration: none; }
+
+    /* ── NAVBAR ── */
+    .navbar {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 999;
+      height: 64px; display: flex; align-items: center; justify-content: space-between;
+      padding: 0 40px;
+      background: #1a0d05;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      box-shadow: 0 2px 20px rgba(0,0,0,0.4);
+    }
+    .nav-logo { display: flex; align-items: center; gap: 10px; }
+    .nav-logo img { height: 36px; width: 36px; object-fit: contain; border-radius: 50%; }
+    .nav-brand { font-family: 'Outfit', sans-serif; font-size: 1.5rem; font-weight: 700; }
+    .nav-brand .s { color: var(--gold); }
+    .nav-brand .n { color: #fff; }
+    .nav-links { display: flex; align-items: center; gap: 2px; }
+    .nav-links a { font-size: 0.75rem; font-weight: 600; color: rgba(255,255,255,0.6); padding: 7px 14px; border-radius: 6px; transition: all .18s; text-transform: uppercase; letter-spacing: 0.1em; }
+    .nav-links a:hover, .nav-links a.active { color: var(--gold); background: transparent; }
+    .nav-links a.nav-contact { background: #719E5D; color: #fff; padding: 7px 20px; margin-left: 6px; border-radius: 0; clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px); }
+    .nav-links a.nav-contact:hover { background: #5c854a; color: #fff; }
+
+    /* ── BANNER ── */
+    .page-banner {
+      position: relative; height: 380px; margin-top: 64px;
+      display: flex; align-items: center; justify-content: center; flex-direction: column;
+      background: radial-gradient(circle at center top, rgba(230,200,150,0.08), transparent 60%), linear-gradient(180deg, #111 0%, #2a1f18 100%);
+      text-align: center;
+    }
+    .banner-eyebrow {
+      font-size: 0.65rem; letter-spacing: 0.3em; text-transform: uppercase; color: #b0a595; font-weight: 700; margin-bottom: 12px;
+      display: flex; align-items: center; justify-content: center; gap: 16px;
+    }
+    .banner-eyebrow::before, .banner-eyebrow::after {
+      content: ''; width: 24px; height: 1.5px; background: #b0a595; opacity: 0.5;
+    }
+    .banner-title {
+      font-family: 'Outfit', sans-serif; font-size: clamp(2.8rem,7vw,4.5rem); font-weight: 800; color: #fff; line-height: 1.1; letter-spacing: -0.02em;
+    }
+    .banner-title span {
+      font-style: italic; color: #c4d187;
+    }
+    .banner-cut { position: absolute; bottom: 0; left: 0; right: 0; height: 40px; background: var(--cream); }
+
+    /* ── CONTACT LAYOUT ── */
+    .contact-wrap {
+      max-width: 1200px; margin: 0 auto; padding: 60px 40px 100px;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start;
+    }
+    .sec-eyebrow {
+      display: flex; align-items: center; gap: 12px;
+      font-size: 0.65rem; font-weight: 800; letter-spacing: 0.25em; text-transform: uppercase; color: var(--red);
+      margin-bottom: 16px;
+    }
+    .sec-eyebrow::before { content: ''; width: 24px; height: 2px; background: var(--red); }
+    .sec-heading {
+      font-family: 'Outfit', sans-serif; font-size: clamp(2.2rem, 4vw, 3rem); font-weight: 800; color: var(--text); line-height: 1.15; margin-bottom: 24px; letter-spacing: -0.01em;
+    }
+    .sec-desc {
+      font-size: 0.95rem; color: #695d56; line-height: 1.7; margin-bottom: 40px;
+    }
+
+    /* Form */
+    .form-group { margin-bottom: 24px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+    .form-label {
+      font-size: 0.65rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.15em; color: #8c8076; margin-bottom: 8px; display: block;
+    }
+    .form-input, .form-select, .form-textarea {
+      width: 100%; padding: 16px 20px; border: 1px solid transparent; border-radius: 0;
+      background: var(--input-bg); font-family: 'Outfit', sans-serif; font-size: 0.95rem; color: var(--text);
+      outline: none; transition: border-color 0.2s, background 0.2s;
+    }
+    .form-input:focus, .form-select:focus, .form-textarea:focus {
+      background: #e4d8bc; border-color: rgba(204,85,67,0.4);
+    }
+    .form-input::placeholder, .form-textarea::placeholder { color: #afa496; }
+    .form-select { appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' fill='none'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%238c8076' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 20px center; }
+    .form-textarea { resize: vertical; min-height: 120px; }
+
+    .form-submit {
+      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+      padding: 16px 32px; background: var(--green); color: #fff;
+      font-family: 'Outfit', sans-serif; font-size: 0.8rem; font-weight: 800; letter-spacing: 0.15em; text-transform: uppercase;
+      border: none; cursor: pointer; transition: background 0.2s;
+      clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);
+    }
+    .form-submit:hover { background: #5c854a; }
+    .form-submit::after { content: '►'; font-size: 0.55rem; margin-left: 2px; }
+
+    /* Office Info */
+    .info-card { background: var(--input-bg); padding: 40px; margin-bottom: 60px; }
+    .info-item { display: flex; align-items: flex-start; gap: 24px; margin-bottom: 24px; padding-bottom: 24px; border-bottom: 1px solid rgba(255,255,255,0.6); }
+    .info-item:last-child { margin-bottom: 0; padding-bottom: 0; border-bottom: none; }
+    .info-icon {
+      width: 36px; height: 36px; background: var(--green); display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+    }
+    /* SVG LINE ICONS */
+    .info-icon svg { width: 16px; height: 16px; stroke: #fff; stroke-width: 1.5; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+    .info-lbl { font-size: 0.65rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.2em; color: var(--red); margin-bottom: 6px; }
+    .info-val { font-size: 0.85rem; color: var(--text); line-height: 1.6; font-weight: 400; }
+
+    .map-box { border: 1.5px dashed rgba(204,85,67,0.4); padding: 80px 20px; text-align: center; background: rgba(233,223,198,0.4); margin-top: 10px; }
+    .map-box svg { width: 42px; height: 42px; stroke: #91b585; fill: none; stroke-width: 1.5; margin-bottom: 16px; display: inline-block; stroke-linecap: round; stroke-linejoin: round; }
+    .map-p { font-size: 0.75rem; color: #695d56; font-weight: 700; letter-spacing: 0.05em; margin-bottom: 6px; }
+    .map-c { font-size: 0.8rem; color: var(--red); font-family: monospace; opacity: 0.6; }
+
+    /* FAQ SECTION */
+    .faq-sec { background: var(--faq-bg); padding: 100px 40px; color: #fff; }
+    .faq-header { text-align: center; margin-bottom: 50px; }
+    .faq-eyebrow {
+      display: inline-flex; align-items: center; justify-content: center; gap: 16px;
+      font-size: 0.65rem; font-weight: 800; letter-spacing: 0.25em; text-transform: uppercase; color: #c4d187; margin-bottom: 16px;
+    }
+    .faq-eyebrow::before, .faq-eyebrow::after { content: ''; width: 30px; height: 2px; background: #c4d187; }
+    .faq-title { font-family: 'Outfit', sans-serif; font-size: clamp(2.5rem, 5vw, 3.5rem); font-weight: 800; color: #fff; letter-spacing: -0.02em; }
+    
+    .faq-list { max-width: 800px; margin: 0 auto; }
+    .faq-item { background: var(--faq-item); margin-bottom: 4px; padding: 24px 32px; display: flex; align-items: center; justify-content: space-between; cursor: pointer; transition: background 0.2s; }
+    .faq-item:hover { background: #4a3e35; }
+    .faq-q { font-size: 0.95rem; font-weight: 700; color: #f2ede8; }
+    .faq-icon { color: var(--red); font-weight: 400; font-size: 1.4rem; line-height: 1; }
+
+    /* CTA SECTION */
+    .cta-sec { background: var(--red); padding: 80px 40px; }
+    .cta-wrap { max-width: 1100px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 40px; }
+    .cta-left { color: #fff; }
+    .cta-title { font-family: 'Outfit', sans-serif; font-size: clamp(2rem, 3.5vw, 2.8rem); font-weight: 800; line-height: 1.1; margin-bottom: 12px; letter-spacing: -0.01em; }
+    .cta-desc { font-size: 0.95rem; opacity: 0.95; font-weight: 400; }
+    .cta-right { display: flex; gap: 16px; flex-shrink: 0; flex-wrap: wrap; }
+    
+    .btn-solid {
+      background: var(--input-bg); color: var(--red); padding: 16px 32px; font-size: 0.75rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.15em; transition: all 0.2s; border: 1px solid transparent; cursor: pointer; display: inline-block;
+    }
+    .btn-solid:hover { background: #fff; }
+    .btn-outline {
+      background: transparent; color: #fff; padding: 16px 32px; font-size: 0.75rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.15em; transition: all 0.2s; border: 1px solid rgba(255,255,255,0.4); cursor: pointer; display: inline-block;
+    }
+    .btn-outline:hover { border-color: #fff; background: rgba(255,255,255,0.1); }
+
+    /* Success message */
+    .success-msg { display: none; padding: 40px; background: var(--input-bg); margin-top: 20px; text-align: left; }
+    .success-icon { margin-bottom: 20px; color: var(--green); }
+    .success-icon svg { width: 48px; height: 48px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+    .success-title { font-family: 'Outfit', sans-serif; font-size: 2rem; font-weight: 800; color: var(--text); margin-bottom: 12px; }
+    .success-text { font-size: 0.95rem; color: #695d56; line-height: 1.7; }
+
+    /* ── FOOTER ── */
+    .footer { background: #120800; padding: 60px 40px 30px; text-align: center; }
+    .footer-brand { font-family: 'Outfit', sans-serif; font-size: 2rem; font-weight: 700; margin-bottom: 4px; }
+    .footer-brand .s { color: var(--gold-lt); }
+    .footer-brand .n { color: #fff; }
+    .footer-tag { color: rgba(255,255,255,.3); font-size: 0.8rem; letter-spacing: .1em; margin-bottom: 24px; }
+    .footer-nav { display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; margin-bottom: 30px; }
+    .footer-nav a { color: rgba(255,255,255,.5); font-size: 0.8rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; padding: 5px 12px; transition: color .2s; }
+    .footer-nav a:hover { color: #fff; }
+    .footer-copy { color: rgba(255,255,255,.15); font-size: 0.75rem; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) { 
+      .contact-wrap { grid-template-columns: 1fr; gap: 60px; padding: 60px 20px; }
+      .cta-wrap { flex-direction: column; text-align: center; justify-content: center; } 
+    }
+    @media (max-width: 640px) {
+      .navbar { padding: 0 16px; }
+      .nav-links a { font-size: 0.74rem; padding: 6px 8px; }
+      .form-row { grid-template-columns: 1fr; }
+      .faq-item { padding: 20px; }
+      .faq-sec, .cta-sec { padding: 60px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── NAVBAR ── -->
+  <nav class="navbar">
+    <div class="nav-logo">
+      <img src="images/LOGO.png" alt="SIBUGNGARI" />
+      <div class="nav-brand"><span class="s">SIBUG</span><span class="n">NGARI</span></div>
+    </div>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="attractions.html">Attractions</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="contact.html" class="active nav-contact">Contact</a>
+      <a href="about.html#motourism">Motourism</a>
+    </div>
+  </nav>
+
+  <!-- ── PAGE BANNER ── -->
+  <div class="page-banner">
+    <div class="banner-cnt">
+      <div class="banner-eyebrow">GET IN TOUCH</div>
+      <div class="banner-title">Contact <span>Us</span></div>
+    </div>
+    <div class="banner-cut"></div>
+  </div>
+
+  <!-- ── CONTACT SECTION ── -->
+  <div class="contact-wrap">
+    
+    <!-- Left — form col -->
+    <div>
+      <div class="sec-eyebrow">SEND A MESSAGE</div>
+      <h2 class="sec-heading">We'd Love to<br>Hear From You</h2>
+      <p class="sec-desc">Whether you're planning a visit, seeking information about cultural programs, or simply curious about Zamboanga Sibugay — our team is here to help.</p>
+
+      <div id="formContent">
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label" for="fname">First Name *</label>
+            <input class="form-input" type="text" id="fname" placeholder="Juan" />
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="lname">Last Name *</label>
+            <input class="form-input" type="text" id="lname" placeholder="dela Cruz" />
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="email">Email Address *</label>
+          <input class="form-input" type="email" id="email" placeholder="juan@example.com" />
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="phone">Phone Number</label>
+          <input class="form-input" type="tel" id="phone" placeholder="+63 917 000 0000" />
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="topic">Type of Inquiry</label>
+          <select class="form-select" id="topic">
+            <option value="">Select an inquiry type...</option>
+            <option value="tourism">Tourism Inquiry</option>
+            <option value="motourism">Motourism Routes</option>
+            <option value="staycation">Staycation / Accommodation</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="message">Your Message *</label>
+          <textarea class="form-textarea" id="message" placeholder="Tell us how we can help plan your Zamboanga Sibugay adventure..."></textarea>
+        </div>
+        <button class="form-submit" onclick="submitForm()">SEND MESSAGE</button>
+      </div>
+
+      <div class="success-msg" id="successMsg">
+        <div class="success-icon">
+          <svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+        </div>
+        <div class="success-title">Message Sent</div>
+        <div class="success-text">Thank you for reaching out! Our team will get back to you shortly.</div>
+      </div>
+    </div>
+
+    <!-- Right — Info col -->
+    <div>
+      <div class="sec-eyebrow">OUR OFFICE</div>
+      <h2 class="sec-heading">Tourism Office<br>Zamboanga Sibugay</h2>
+      <p class="sec-desc">We welcome all inquiries about tourism, cultural heritage, and travel arrangements. Our team is ready to assist visitors and potential partners.</p>
+
+      <div class="info-card">
+        <div class="info-item">
+          <div class="info-icon">
+            <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+          </div>
+          <div>
+            <div class="info-lbl">Address</div>
+            <div class="info-val">Provincial Capitol Complex<br>Ipil, Zamboanga Sibugay<br>Philippines 7001</div>
+          </div>
+        </div>
+        <div class="info-item">
+          <div class="info-icon">
+            <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+          </div>
+          <div>
+            <div class="info-lbl">Phone</div>
+            <div class="info-val">(062) 333-0000<br>+63 917 000 0000</div>
+          </div>
+        </div>
+        <div class="info-item">
+          <div class="info-icon">
+             <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+          </div>
+          <div>
+            <div class="info-lbl">Email</div>
+            <div class="info-val">tourism@zamboangasibugay.gov.ph<br>info@zamboangasibugay.gov.ph</div>
+          </div>
+        </div>
+        <div class="info-item">
+          <div class="info-icon">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+          </div>
+          <div>
+            <div class="info-lbl">Office Hours</div>
+            <div class="info-val">Monday – Friday: 8:00 AM – 5:00 PM<br>Saturday: 8:00 AM – 12:00 PM<br>Closed on Sundays & Holidays</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="sec-eyebrow" style="font-size: 0.6rem;">OUR LOCATION</div>
+      <div class="map-box">
+        <svg viewBox="0 0 24 24" stroke="currentColor" fill="none"><polygon points="3 6 9 3 15 6 21 3 21 18 15 21 9 18 3 21"></polygon><line x1="9" y1="3" x2="9" y2="18"></line><line x1="15" y1="6" x2="15" y2="21"></line></svg>
+        <div class="map-p">Google Maps Embed Goes Here</div>
+        <div class="map-c">&lt;iframe src="maps.google.com/embed?..."&gt;</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── FAQ SECTION ── -->
+  <div class="faq-sec">
+    <div class="faq-header">
+      <div class="faq-eyebrow">COMMON QUESTIONS</div>
+      <h2 class="faq-title">Frequently Asked</h2>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="faq-q">How do I get to Zamboanga Sibugay?</div>
+        <div class="faq-icon">▾</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">What is the best time to visit the province?</div>
+        <div class="faq-icon">▾</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Are there accommodations in Ipil and other municipalities?</div>
+        <div class="faq-icon">▾</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Is it safe to travel to Zamboanga Sibugay?</div>
+        <div class="faq-icon">▾</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">How can I arrange a guided tour of the province?</div>
+        <div class="faq-icon">▾</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── CTA SECTION ── -->
+  <div class="cta-sec">
+    <div class="cta-wrap">
+      <div class="cta-left">
+        <div class="cta-title">Ready to Discover<br>the Province?</div>
+        <div class="cta-desc">Start planning your trip to Zamboanga Sibugay today.</div>
+      </div>
+      <div class="cta-right">
+        <a href="attractions.html" class="btn-solid">EXPLORE ATTRACTIONS</a>
+        <a href="gallery.html" class="btn-outline">VIEW GALLERY</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── FOOTER ── -->
+  <footer class="footer">
+    <div class="footer-brand"><span class="s">SIBUG</span><span class="n">NGARI</span></div>
+    <div class="footer-tag">Discover Zamboanga Sibugay</div>
+    <div class="footer-nav">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="attractions.html">Attractions</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <div class="footer-copy">&copy; 2026 SIBUGNGARI. All rights reserved.</div>
+  </footer>
+
+  <script>
+    function submitForm() {
+      const fname   = document.getElementById('fname').value.trim();
+      const email   = document.getElementById('email').value.trim();
+      const message = document.getElementById('message').value.trim();
+
+      if (!fname) { alert('Please enter your first name.'); return; }
+      if (!email || !email.includes('@')) { alert('Please enter a valid email address.'); return; }
+      if (!message) { alert('Please write your message before sending.'); return; }
+
+      document.getElementById('formContent').style.display = 'none';
+      document.getElementById('successMsg').style.display = 'block';
+    }
+  </script>
+
+</body>
+</html>
