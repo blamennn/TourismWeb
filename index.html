@@ -1,4 +1,4 @@
-*<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -593,6 +593,8 @@
       overflow: hidden;
       box-shadow: 0 8px 32px rgba(0, 0, 0, .18);
       background: #fff;
+      display: flex;
+      flex-direction: column;
       transition: transform .25s, box-shadow .25s;
     }
 
@@ -641,6 +643,9 @@
 
     .spot-body {
       padding: clamp(14px, 2.5vw, 20px) clamp(16px, 3vw, 22px);
+      display: flex;
+      flex: 1;
+      flex-direction: column;
     }
 
     .spot-loc {
@@ -671,12 +676,14 @@
       color: var(--brown);
       display: inline-flex;
       align-items: center;
-      gap: 4px;
-      transition: gap .18s, color .18s;
+      margin-top: auto;
+      align-self: flex-end;
+      justify-content: flex-end;
+      text-align: right;
+      transition: color .18s;
     }
 
     .spot-link:hover {
-      gap: 8px;
       color: var(--gold);
     }
 
@@ -1593,6 +1600,7 @@
       .hamburger {
         display: flex;
       }
+
     }
 
     @media (max-width: 600px) {
@@ -1782,29 +1790,29 @@
     </div>
     <div class="spots-grid">
       <div class="spot-card">
-        <div class="spot-img" style="background:linear-gradient(135deg,#1a5276,#2e86c1);">🏝️<img
+        <div class="spot-img" style="background:linear-gradient(135deg,#1a5276,#2e86c1);"><img
             src="Images/Buluan.jpg" alt="Buluan Island" onerror="this.style.display='none'" />
           <div class="spot-img-ov"></div>
           <div class="spot-tag" style="background:rgba(26,82,118,.85);">Beach</div>
         </div>
         <div class="spot-body">
-          <div class="spot-loc">📍 Ipil, Zamboanga Sibugay</div>
+          <div class="spot-loc">Ipil, Zamboanga Sibugay</div>
           <div class="spot-name">Buluan Island</div>
           <div class="spot-desc">A pristine island paradise in the Moro Gulf with turquoise waters and powdery white
-            sand — Sibugay's crown jewel.</div><a href="attractions.html" class="spot-link">Explore →</a>
+            sand — Sibugay's crown jewel.</div><a href="attractions.html" class="spot-link">Explore</a>
         </div>
       </div>
       <div class="spot-card">
-        <div class="spot-img" style="background:linear-gradient(135deg,#1a7a4a,#145a35);">🌿<img
+        <div class="spot-img" style="background:linear-gradient(135deg,#1a7a4a,#145a35);"><img
             src="Images/Stonehills.jpg" alt="Stonehills Farm" onerror="this.style.display='none'" />
           <div class="spot-img-ov"></div>
           <div class="spot-tag" style="background:rgba(26,122,74,.85);">Eco-Farm</div>
         </div>
         <div class="spot-body">
-          <div class="spot-loc">📍 Tungawan, Zamboanga Sibugay</div>
+          <div class="spot-loc">Tungawan, Zamboanga Sibugay</div>
           <div class="spot-name">Stonehills Farm</div>
           <div class="spot-desc">Rolling limestone hills and lush greenery. The top first stop for motourists from
-            Zamboanga City.</div><a href="#motourism" class="spot-link">See Route →</a>
+            Zamboanga City.</div><a href="#motourism" class="spot-link">See Routes</a>
         </div>
       </div>
       <div class="spot-card">
@@ -1814,10 +1822,10 @@
           <div class="spot-tag" style="background:rgba(13,79,110,.85);">Nature</div>
         </div>
         <div class="spot-body">
-          <div class="spot-loc"> Titay, Zamboanga Sibugay</div>
+          <div class="spot-loc">Titay, Zamboanga Sibugay</div>
           <div class="spot-name"></div>
           <div class="spot-desc">A stunning mountain waterfall with crystal-clear water — perfect for travellers that
-            want fun.</div><a href="attractions.html" class="spot-link">Learn More →</a>
+            want fun.</div><a href="attractions.html" class="spot-link">Learn More</a>
         </div>
       </div>
     </div>
@@ -2090,3 +2098,7 @@
 </body>
 
 </html>
+
+
+
+
