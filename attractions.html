@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -27,7 +27,7 @@
     a { text-decoration: none; }
     img { max-width: 100%; display: block; }
 
-    /* ── NAVBAR ── */
+    /* â”€â”€ NAVBAR â”€â”€ */
     .navbar {
       position: fixed; top: 0; left: 0; right: 0; z-index: 999;
       height: var(--nav-h);
@@ -75,7 +75,7 @@
       .hamburger { display: flex; }
     }
 
-    /* ── PAGE BANNER ── */
+    /* â”€â”€ PAGE BANNER â”€â”€ */
     .page-banner {
       position: relative; height: 420px; margin-top: var(--nav-h);
       display: flex; align-items: center; justify-content: center;
@@ -111,7 +111,7 @@
     }
     @keyframes fadeUp { from { opacity:0; transform:translateY(18px); } to { opacity:1; transform:translateY(0); } }
 
-    /* ── BUTTONS ── */
+    /* â”€â”€ BUTTONS â”€â”€ */
     .btn-gold { display: inline-block; background: var(--gold); color: #fff; font-weight: 600; font-size: 0.9rem; padding: 13px 28px; border-radius: 4px; transition: all .25s ease; box-shadow: 0 4px 18px rgba(212,148,10,.3); }
     .btn-gold:hover { background: var(--gold-lt); color: var(--dark); transform: translateY(-4px) scale(1.05); box-shadow: 0 8px 28px rgba(212, 148, 10, .5); }
     .btn-outline { display: inline-block; background: transparent; color: var(--brown); font-weight: 600; font-size: 0.85rem; padding: 10px 22px; border-radius: 4px; border: 1.5px solid var(--brown); transition: all .2s; }
@@ -119,7 +119,7 @@
     .btn-ghost-dark { display: inline-block; background: transparent; color: #fff; font-weight: 500; font-size: 0.9rem; padding: 12px 26px; border-radius: 4px; border: 1.5px solid rgba(255,255,255,.4); transition: all .25s ease; }
     .btn-ghost-dark:hover { border-color: var(--gold-lt); color: var(--gold-lt); transform: translateY(-4px) scale(1.05); box-shadow: 0 6px 20px rgba(240, 180, 41, .3); }
 
-    /* ── SECTION SHELLS ── */
+    /* â”€â”€ SECTION SHELLS â”€â”€ */
     .sec { padding: 80px 40px; max-width: 1200px; margin: 0 auto; }
     .sec-full { padding: 80px 40px; }
     .sec-hdr { text-align: center; margin-bottom: 52px; }
@@ -127,7 +127,7 @@
     .sec-title { font-family: 'Outfit', sans-serif; font-size: clamp(2rem, 4vw, 2.8rem); font-weight: 700; color: var(--text); line-height: 1.2; margin-bottom: 14px; }
     .sec-line { width: 48px; height: 3px; margin: 0 auto; background: linear-gradient(to right, var(--gold), var(--brown)); border-radius: 2px; }
 
-    /* ── FILTER TABS ── */
+    /* â”€â”€ FILTER TABS â”€â”€ */
     .filter-bar {
       display: flex; justify-content: center;
       gap: 10px; flex-wrap: wrap; margin-bottom: 48px;
@@ -142,7 +142,7 @@
     .filter-btn:hover { border-color: var(--gold); color: var(--brown); }
     .filter-btn.active { background: var(--gold); color: #fff; border-color: var(--gold); }
 
-    /* ── FEATURED CARD (LARGE — TOP) ── */
+    /* â”€â”€ FEATURED CARD (LARGE â€” TOP) â”€â”€ */
     .featured-spot {
       display: grid; grid-template-columns: 1.1fr 0.9fr;
       gap: 0; border-radius: 14px; overflow: hidden;
@@ -187,7 +187,7 @@
       font-size: 0.76rem; font-weight: 600; padding: 5px 12px; border-radius: 20px;
     }
 
-    /* ── SPOT CARDS GRID ── */
+    /* â”€â”€ SPOT CARDS GRID â”€â”€ */
     .spots-grid {
       display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
     }
@@ -227,7 +227,7 @@
     .spot-link { font-size: 0.82rem; font-weight: 700; color: var(--brown); display: inline-flex; align-items: center; gap: 4px; transition: gap .18s, color .18s; }
     .spot-link:hover { gap: 8px; color: var(--gold); }
 
-    /* ── BEST TIME BAND ── */
+    /* â”€â”€ BEST TIME BAND â”€â”€ */
     .best-time-band {
       background: var(--dark);
       padding: 72px 40px;
@@ -254,7 +254,7 @@
     .month-status { font-size: 0.65rem; color: rgba(255,255,255,.35); }
     .month-box.peak .month-status { color: var(--gold); font-weight: 600; }
 
-    /* ── MOTOURISM CALLOUT ── */
+    /* â”€â”€ MOTOURISM CALLOUT â”€â”€ */
     .moto-callout {
       position: relative; min-height: 340px; display: flex; align-items: center;
       background: url('images/moto-bg.jpg') center center / cover no-repeat;
@@ -270,12 +270,12 @@
     .btn-teal { display: inline-block; background: #1a9a7a; color: #fff; font-weight: 600; font-size: 0.9rem; padding: 13px 28px; border-radius: 4px; transition: all .2s; }
     .btn-teal:hover { background: #22b890; transform: translateY(-2px); }
 
-    /* ── CTA ── */
+    /* â”€â”€ CTA â”€â”€ */
     .cta-band { background: var(--cream); padding: 80px 40px; text-align: center; }
     .cta-title { font-family: 'Outfit', sans-serif; font-size: clamp(2rem, 4vw, 3rem); font-weight: 700; color: var(--text); margin-bottom: 14px; }
     .cta-desc { color: var(--soft); font-size: 0.98rem; max-width: 500px; margin: 0 auto 32px; line-height: 1.8; }
 
-    /* ── FOOTER ── */
+    /* â”€â”€ FOOTER â”€â”€ */
     .footer { background: var(--dark); padding: 40px 40px 24px; text-align: center; }
     .footer-brand { font-family: 'Outfit', sans-serif; font-size: 2rem; font-weight: 700; margin-bottom: 4px; }
     .footer-brand .s { color: var(--gold-lt); }
@@ -286,7 +286,7 @@
     .footer-nav a:hover { color: #fff; }
     .footer-copy { color: rgba(255,255,255,.15); font-size: 0.75rem; }
 
-    /* ── RESPONSIVE ── */
+    /* â”€â”€ RESPONSIVE â”€â”€ */
     @media (max-width: 960px) {
       .featured-spot { grid-template-columns: 1fr; }
       .feat-img { min-height: 280px; }
@@ -306,7 +306,7 @@
 </head>
 <body>
 
-  <!-- ── NAVBAR ── -->
+  <!-- â”€â”€ NAVBAR â”€â”€ -->
   <nav class="navbar">
     <div class="nav-logo">
       <img src="images/LOGO.png" alt="SIBUGNGARI" />
@@ -340,7 +340,7 @@
     <a href="#motourism" class="moto-anchor">MOTOURISM</a>
   </nav>
 
-  <!-- ── PAGE BANNER ── -->
+  <!-- â”€â”€ PAGE BANNER â”€â”€ -->
   <!-- Place your photo as images/attractions-banner.jpg -->
   <div class="page-banner">
     <div class="banner-fb"></div>
@@ -353,46 +353,44 @@
     <div class="banner-cut"></div>
   </div>
 
-  <!-- ── SPOTS SECTION ── -->
+  <!-- â”€â”€ SPOTS SECTION â”€â”€ -->
   <div class="sec">
     <div class="sec-hdr">
       <div class="sec-label">Tourist Spots</div>
       <div class="sec-title">Places to Visit</div>
       <div class="sec-line"></div>
     </div>
-
     <!-- Filter bar -->
     <div class="filter-bar">
       <button class="filter-btn active" onclick="filterSpots('all', this)">All</button>
-      <button class="filter-btn" onclick="filterSpots('beach', this)">🏖️ Beach</button>
-      <button class="filter-btn" onclick="filterSpots('nature', this)">🌿 Nature</button>
-      <button class="filter-btn" onclick="filterSpots('heritage', this)">🏛️ Heritage</button>
-      <button class="filter-btn" onclick="filterSpots('culture', this)">⛪ Culture</button>
-      <button class="filter-btn" onclick="filterSpots('ecofarm', this)">🌾 Eco-Farm</button>
+      <button class="filter-btn" onclick="filterSpots('beach', this)">Beach</button>
+      <button class="filter-btn" onclick="filterSpots('nature', this)">Nature</button>
+      <button class="filter-btn" onclick="filterSpots('heritage', this)">Heritage</button>
+      <button class="filter-btn" onclick="filterSpots('culture', this)">Culture</button>
+      <button class="filter-btn" onclick="filterSpots('ecofarm', this)">Eco-Farm</button>
     </div>
 
     <!-- FEATURED — Buluan Island -->
     <div class="featured-spot" data-cat="beach">
       <div class="feat-img">
-        🏝️
         <img src="Images/Buluan.jpg" alt="Buluan Island" onerror="this.style.display='none'" />
-        <div class="feat-badge">⭐ Top Pick</div>
+        <div class="feat-badge">Top Pick</div>
       </div>
       <div class="feat-body">
-        <div class="feat-tag">🏖️ Beach</div>
+        <div class="feat-tag">Beach</div>
         <div class="feat-name">Buluan Island</div>
-        <div class="feat-loc">📍 Ipil, Zamboanga Sibugay</div>
+        <div class="feat-loc">Ipil, Zamboanga Sibugay</div>
         <div class="feat-desc">
           A pristine island paradise in the Moro Gulf boasting turquoise
           waters and powdery white sand shores. One of Zamboanga Sibugay's
-          most breathtaking crown jewels — ideal for island hopping,
+          most breathtaking crown jewels &mdash; ideal for island hopping,
           snorkeling, and unforgettable sunsets.
         </div>
         <div class="feat-highlights">
-          <span class="feat-tag-sm">🤿 Snorkeling</span>
-          <span class="feat-tag-sm">🚤 Island Hopping</span>
-          <span class="feat-tag-sm">🌅 Sunset Views</span>
-          <span class="feat-tag-sm">📸 Photography</span>
+          <span class="feat-tag-sm">Snorkeling</span>
+          <span class="feat-tag-sm">Island Hopping</span>
+          <span class="feat-tag-sm">Sunset Views</span>
+          <span class="feat-tag-sm">Photography</span>
         </div>
         <a href="contact.html" class="btn-gold">Plan a Visit</a>
       </div>
@@ -404,19 +402,18 @@
       <!-- Stonehills Farm -->
       <div class="spot-card" data-cat="ecofarm">
         <div class="spot-img" style="background:linear-gradient(135deg,#1a7a4a,#145a35);">
-          🌿
           <img src="images/stonehills.jpg" alt="Stonehills Farm" onerror="this.style.display='none'" />
           <div class="spot-img-overlay"></div>
-          <div class="spot-tag" style="background:rgba(26,122,74,0.85);">🌾 Eco-Farm</div>
-          <div class="spot-moto-tag">⭐ Moto First Stop</div>
+          <div class="spot-tag" style="background:rgba(26,122,74,0.85);">Eco-Farm</div>
+          <div class="spot-moto-tag">Moto First Stop</div>
         </div>
         <div class="spot-body">
-          <div class="spot-loc">📍 Tungawan, Zamboanga Sibugay</div>
+          <div class="spot-loc">Tungawan, Zamboanga Sibugay</div>
           <div class="spot-name">Stonehills Farm</div>
           <div class="spot-desc">Rolling limestone hills, lush greenery, and fresh mountain air. The top recommended first stop for motourists from Zamboanga City and a perfect outing for families and students.</div>
           <div class="spot-footer">
-            <div class="spot-ideal">👨‍👩‍👧 Families · 🏍️ Riders · 🎒 Students</div>
-            <a href="motourism.html" class="spot-link">Route →</a>
+            <div class="spot-ideal">Families · Riders · Students</div>
+            <a href="motourism.html" class="spot-link">Route</a>
           </div>
         </div>
       </div>
@@ -424,18 +421,17 @@
       <!-- Naga Falls -->
       <div class="spot-card" data-cat="nature">
         <div class="spot-img" style="background:linear-gradient(135deg,#0d4f6e,#1a7a9a);">
-          💧
           <img src="Images/Dalisay Falls.jpg" alt="Naga Falls" onerror="this.style.display='none'" />
           <div class="spot-img-overlay"></div>
-          <div class="spot-tag" style="background:rgba(13,79,110,0.85);">🌿 Nature</div>
+          <div class="spot-tag" style="background:rgba(13,79,110,0.85);">Nature</div>
         </div>
         <div class="spot-body">
-          <div class="spot-loc">📍 Kipit,Titay, Zamboanga Sibugay</div>
+          <div class="spot-loc">Kipit, Titay, Zamboanga Sibugay</div>
           <div class="spot-name">Dalisay Falls</div>
-          <div class="spot-desc">A stunning mountain waterfall with crystal-clear natural pools — perfect for a refreshing swim after a long ride or a relaxing escape for the whole family.</div>
+          <div class="spot-desc">A stunning mountain waterfall with crystal-clear natural pools &mdash; perfect for a refreshing swim after a long ride or a relaxing escape for the whole family.</div>
           <div class="spot-footer">
-            <div class="spot-ideal">👨‍👩‍👧 Families · 🏍️ Riders</div>
-            <a href="contact.html" class="spot-link">Learn More →</a>
+            <div class="spot-ideal">Families · Riders</div>
+            <a href="contact.html" class="spot-link">Learn More</a>
           </div>
         </div>
       </div>
@@ -443,18 +439,17 @@
       <!-- Malangas Coal Mines -->
       <div class="spot-card" data-cat="heritage">
         <div class="spot-img" style="background:linear-gradient(135deg,#7d4e1c,#b06b2a);">
-          ⛏️
           <img src="images/malangas.jpg" alt="Malangas Coal Mines" onerror="this.style.display='none'" />
           <div class="spot-img-overlay"></div>
-          <div class="spot-tag" style="background:rgba(90,50,10,0.85);">🏛️ Heritage</div>
+          <div class="spot-tag" style="background:rgba(90,50,10,0.85);">Heritage</div>
         </div>
         <div class="spot-body">
-          <div class="spot-loc">📍 Malangas, Zamboanga Sibugay</div>
+          <div class="spot-loc">Malangas, Zamboanga Sibugay</div>
           <div class="spot-name">Malangas Coal Mines</div>
           <div class="spot-desc">A historic eco-tourism site blending industrial heritage with tropical scenery. A must-visit for student educational tours, history buffs, and adventurous riders.</div>
           <div class="spot-footer">
-            <div class="spot-ideal">🎒 Students · 🏍️ Riders</div>
-            <a href="contact.html" class="spot-link">Learn More →</a>
+            <div class="spot-ideal">Students · Riders</div>
+            <a href="contact.html" class="spot-link">Learn More</a>
           </div>
         </div>
       </div>
@@ -462,19 +457,18 @@
       <!-- Kabasalan Bay -->
       <div class="spot-card" data-cat="beach">
         <div class="spot-img" style="background:linear-gradient(135deg,#1a4a7a,#2a6aaa);">
-          🌅
           <img src="images/kabasalan-bay.jpg" alt="Kabasalan Bay" onerror="this.style.display='none'" />
           <div class="spot-img-overlay"></div>
-          <div class="spot-tag" style="background:rgba(26,74,122,0.85);">🏖️ Beach</div>
-          <div class="spot-moto-tag">⭐ Moto First Stop</div>
+          <div class="spot-tag" style="background:rgba(26,74,122,0.85);">Beach</div>
+          <div class="spot-moto-tag">Moto First Stop</div>
         </div>
         <div class="spot-body">
-          <div class="spot-loc">📍 Kabasalan, Zamboanga Sibugay</div>
+          <div class="spot-loc">Kabasalan, Zamboanga Sibugay</div>
           <div class="spot-name">Kabasalan Bay</div>
           <div class="spot-desc">A stunning bay overlooking the Moro Gulf. The recommended first stop for riders from Pagadian. Famous for sunrise views and fresh morning seafood along the waterfront.</div>
           <div class="spot-footer">
-            <div class="spot-ideal">🏍️ Riders · 👨‍👩‍👧 Families</div>
-            <a href="motourism.html" class="spot-link">Route →</a>
+            <div class="spot-ideal">Riders · Families</div>
+            <a href="motourism.html" class="spot-link">Route</a>
           </div>
         </div>
       </div>
@@ -482,18 +476,17 @@
       <!-- Ipil Beach -->
       <div class="spot-card" data-cat="beach">
         <div class="spot-img" style="background:linear-gradient(135deg,#1565c0,#0d47a1);">
-          🏖️
           <img src="images/ipil-beach.jpg" alt="Ipil Beach" onerror="this.style.display='none'" />
           <div class="spot-img-overlay"></div>
-          <div class="spot-tag" style="background:rgba(21,101,192,0.85);">🏖️ Beach</div>
+          <div class="spot-tag" style="background:rgba(21,101,192,0.85);">Beach</div>
         </div>
         <div class="spot-body">
-          <div class="spot-loc">📍 Ipil, Zamboanga Sibugay</div>
+          <div class="spot-loc">Ipil, Zamboanga Sibugay</div>
           <div class="spot-name">Ipil Beach</div>
           <div class="spot-desc">A peaceful stretch of white sand along the Moro Gulf, perfect for swimming, sunset watching, and family picnics. Shallow waters make it safe for children.</div>
           <div class="spot-footer">
-            <div class="spot-ideal">👨‍👩‍👧 Families · 🎒 Students</div>
-            <a href="contact.html" class="spot-link">Learn More →</a>
+            <div class="spot-ideal">Families · Students</div>
+            <a href="contact.html" class="spot-link">Learn More</a>
           </div>
         </div>
       </div>
@@ -501,18 +494,17 @@
       <!-- Cathedral -->
       <div class="spot-card" data-cat="culture">
         <div class="spot-img" style="background:linear-gradient(135deg,#5a2d0c,#8a4a1a);">
-          ⛪
           <img src="Images/Cathedral of Saint Joseph the Worker.jpg" alt="Cathedral of Saint Joseph the Worker" onerror="this.style.display='none'" />
           <div class="spot-img-overlay"></div>
-          <div class="spot-tag" style="background:rgba(70,30,8,0.85);">⛪ Culture</div>
+          <div class="spot-tag" style="background:rgba(70,30,8,0.85);">Culture</div>
         </div>
         <div class="spot-body">
-          <div class="spot-loc">📍 Ipil, Zamboanga Sibugay</div>
+          <div class="spot-loc">Ipil, Zamboanga Sibugay</div>
           <div class="spot-name">Cathedral of Saint Joseph the Worker</div>
-          <div class="spot-desc">One of the oldest and most iconic religious landmarks in Ipil — a symbol of faith, community, and the province's deep cultural and colonial heritage.</div>
+          <div class="spot-desc">One of the oldest and most iconic religious landmarks in Ipil &mdash; a symbol of faith, community, and the province's deep cultural and colonial heritage.</div>
           <div class="spot-footer">
-            <div class="spot-ideal">👨‍👩‍👧 Families · 🎒 Students</div>
-            <a href="contact.html" class="spot-link">Learn More →</a>
+            <div class="spot-ideal">Families · Students</div>
+            <a href="contact.html" class="spot-link">Learn More</a>
           </div>
         </div>
       </div>
@@ -520,18 +512,17 @@
       <!-- Zamboanga Sibugay Capitol -->
       <div class="spot-card" data-cat="heritage">
         <div class="spot-img" style="background:linear-gradient(135deg,#37474f,#546e7a);">
-          🏛️
           <img src="Images/Zamboanga Sibugay Capitol.jpg" alt="Zamboanga Sibugay Capitol" onerror="this.style.display='none'" />
           <div class="spot-img-overlay"></div>
-          <div class="spot-tag" style="background:rgba(40,55,65,0.85);">🏛️ Landmark</div>
+          <div class="spot-tag" style="background:rgba(40,55,65,0.85);">Landmark</div>
         </div>
         <div class="spot-body">
-          <div class="spot-loc">📍 Ipil, Zamboanga Sibugay</div>
+          <div class="spot-loc">Ipil, Zamboanga Sibugay</div>
           <div class="spot-name">Zamboanga Sibugay Capitol</div>
           <div class="spot-desc">The proud architectural centerpiece of Ipil, representing the province's governance and identity as the seat of provincial power since its founding in 2001.</div>
           <div class="spot-footer">
-            <div class="spot-ideal">🎒 Students · 🏍️ Riders</div>
-            <a href="contact.html" class="spot-link">Learn More →</a>
+            <div class="spot-ideal">Students · Riders</div>
+            <a href="contact.html" class="spot-link">Learn More</a>
           </div>
         </div>
       </div>
@@ -539,18 +530,17 @@
       <!-- Lake Alangan -->
       <div class="spot-card" data-cat="nature">
         <div class="spot-img" style="background:linear-gradient(135deg,#1b5e20,#2e7d32);">
-          🏞️
           <img src="images/lake-alangan.jpg" alt="Lake Alangan" onerror="this.style.display='none'" />
           <div class="spot-img-overlay"></div>
-          <div class="spot-tag" style="background:rgba(27,94,32,0.85);">🌿 Nature</div>
+          <div class="spot-tag" style="background:rgba(27,94,32,0.85);">Nature</div>
         </div>
         <div class="spot-body">
-          <div class="spot-loc">📍 Alicia, Zamboanga Sibugay</div>
+          <div class="spot-loc">Alicia, Zamboanga Sibugay</div>
           <div class="spot-name">Lake Alangan</div>
-          <div class="spot-desc">A serene freshwater lake surrounded by lush hills and forest — a hidden gem for nature lovers, bird watchers, and those seeking peaceful scenery off the beaten path.</div>
+          <div class="spot-desc">A serene freshwater lake surrounded by lush hills and forest &mdash; a hidden gem for nature lovers, bird watchers, and those seeking peaceful scenery off the beaten path.</div>
           <div class="spot-footer">
-            <div class="spot-ideal">🌿 Nature Lovers · 📸 Photographers</div>
-            <a href="contact.html" class="spot-link">Learn More →</a>
+            <div class="spot-ideal">Nature Lovers · Photographers</div>
+            <a href="contact.html" class="spot-link">Learn More</a>
           </div>
         </div>
       </div>
@@ -558,18 +548,17 @@
       <!-- Moro Gulf Coastline -->
       <div class="spot-card" data-cat="beach">
         <div class="spot-img" style="background:linear-gradient(135deg,#006064,#00838f);">
-          🌊
           <img src="images/moro-gulf.jpg" alt="Moro Gulf" onerror="this.style.display='none'" />
           <div class="spot-img-overlay"></div>
-          <div class="spot-tag" style="background:rgba(0,96,100,0.85);">🌊 Coastline</div>
+          <div class="spot-tag" style="background:rgba(0,96,100,0.85);">Coastline</div>
         </div>
         <div class="spot-body">
-          <div class="spot-loc">📍 Zamboanga Sibugay Coast</div>
+          <div class="spot-loc">Zamboanga Sibugay Coast</div>
           <div class="spot-name">Moro Gulf Coastline</div>
-          <div class="spot-desc">The entire western and southern coast of the province is lined with scenic coves, fishing villages, and sweeping ocean views — a paradise for coastal road trippers and riders.</div>
+          <div class="spot-desc">The entire western and southern coast of the province is lined with scenic coves, fishing villages, and sweeping ocean views &mdash; a paradise for coastal road trippers and riders.</div>
           <div class="spot-footer">
-            <div class="spot-ideal">🏍️ Riders · 📸 Photographers</div>
-            <a href="motourism.html" class="spot-link">Route →</a>
+            <div class="spot-ideal">Riders · Photographers</div>
+            <a href="motourism.html" class="spot-link">Route</a>
           </div>
         </div>
       </div>
@@ -577,7 +566,7 @@
     </div>
   </div>
 
-  <!-- ── BEST TIME TO VISIT ── -->
+  <!-- ——— BEST TIME TO VISIT ——— -->
   <div class="best-time-band">
     <div class="best-time-inner">
       <div>
@@ -587,43 +576,42 @@
       </div>
       <div>
         <div class="months-grid">
-          <div class="month-box"><div class="month-name">Jan</div><div class="month-icon">☀️</div><div class="month-status">Dry</div></div>
-          <div class="month-box peak"><div class="month-name">Feb</div><div class="month-icon">🌟</div><div class="month-status">Best</div></div>
-          <div class="month-box peak"><div class="month-name">Mar</div><div class="month-icon">🌟</div><div class="month-status">Best</div></div>
-          <div class="month-box peak"><div class="month-name">Apr</div><div class="month-icon">🌟</div><div class="month-status">Best</div></div>
-          <div class="month-box"><div class="month-name">May</div><div class="month-icon">⛅</div><div class="month-status">Dry</div></div>
-          <div class="month-box"><div class="month-name">Jun</div><div class="month-icon">🌧️</div><div class="month-status">Rainy</div></div>
-          <div class="month-box"><div class="month-name">Jul</div><div class="month-icon">🌧️</div><div class="month-status">Rainy</div></div>
-          <div class="month-box"><div class="month-name">Aug</div><div class="month-icon">🌧️</div><div class="month-status">Rainy</div></div>
-          <div class="month-box"><div class="month-name">Sep</div><div class="month-icon">🌧️</div><div class="month-status">Rainy</div></div>
-          <div class="month-box"><div class="month-name">Oct</div><div class="month-icon">⛅</div><div class="month-status">Mixed</div></div>
-          <div class="month-box"><div class="month-name">Nov</div><div class="month-icon">☀️</div><div class="month-status">Dry</div></div>
-          <div class="month-box peak"><div class="month-name">Dec</div><div class="month-icon">🌟</div><div class="month-status">Best</div></div>
+          <div class="month-box"><div class="month-name">Jan</div><div class="month-status">Dry</div></div>
+          <div class="month-box peak"><div class="month-name">Feb</div><div class="month-status">Best</div></div>
+          <div class="month-box peak"><div class="month-name">Mar</div><div class="month-status">Best</div></div>
+          <div class="month-box peak"><div class="month-name">Apr</div><div class="month-status">Best</div></div>
+          <div class="month-box"><div class="month-name">May</div><div class="month-status">Dry</div></div>
+          <div class="month-box"><div class="month-name">Jun</div><div class="month-status">Rainy</div></div>
+          <div class="month-box"><div class="month-name">Jul</div><div class="month-status">Rainy</div></div>
+          <div class="month-box"><div class="month-name">Aug</div><div class="month-status">Rainy</div></div>
+          <div class="month-box"><div class="month-name">Sep</div><div class="month-status">Rainy</div></div>
+          <div class="month-box"><div class="month-name">Oct</div><div class="month-status">Mixed</div></div>
+          <div class="month-box"><div class="month-name">Nov</div><div class="month-status">Dry</div></div>
+          <div class="month-box peak"><div class="month-name">Dec</div><div class="month-status">Best</div></div>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- ── MOTOURISM CALLOUT ── -->
+  <!-- ——— MOTOURISM CALLOUT ——— -->
   <section class="moto-callout">
     <div class="moto-fb"></div>
     <div class="moto-ov"></div>
     <div class="moto-callout-cnt">
-      <div class="moto-lbl">🏍️ Motourism</div>
+      <div class="moto-lbl">Motourism</div>
       <div class="moto-title">Plan Your Riding Route</div>
       <div class="moto-desc">Are you a motourist or riding group visiting the province? Check our dedicated Motourism page for mapped routes, first stop guides, rider tips, and staycation options.</div>
-      <a href="motourism.html" class="btn-teal">Go to Motourism Page →</a>
+      <a href="motourism.html" class="btn-teal">Go to Motourism Page</a>
     </div>
   </section>
-
-  <!-- ── CTA ── -->
+  <!-- CTA -->
   <div class="cta-band">
     <div class="cta-title">Plan Your Visit</div>
     <div class="cta-desc">Want to know more about visiting these amazing places? Send us a message and we'll help you plan your perfect trip!</div>
     <a href="contact.html" class="btn-gold">Contact Us</a>
   </div>
 
-  <!-- ── FOOTER ── -->
+  <!-- â”€â”€ FOOTER â”€â”€ -->
   <footer class="footer">
     <div class="footer-brand"><span class="s">SIBUG</span><span class="n">NGARI</span></div>
     <div class="footer-tag">Discover Zamboanga Sibugay</div>
@@ -638,9 +626,9 @@
     <div class="footer-copy">&copy; 2026 SIBUGNGARI. All rights reserved.</div>
   </footer>
 
-  <!-- ── FILTER SCRIPT ── -->
+  <!-- â”€â”€ FILTER SCRIPT â”€â”€ -->
   <script>
-    /* ══ HAMBURGER MENU ══ */
+    /* â•â• HAMBURGER MENU â•â• */
     const hamburger = document.getElementById('hamburger');
     const mobileNav = document.getElementById('mobileNav');
     const navOverlay = document.getElementById('navOverlay');
@@ -668,7 +656,7 @@
       link.addEventListener('click', () => toggleMenu(false));
     });
 
-    /* ══ ACTIVE NAV LINK ══ */
+    /* â•â• ACTIVE NAV LINK â•â• */
     function setActiveNav() {
       const currentPage = window.location.pathname.split('/').pop() || 'index.html';
       document.querySelectorAll('.nav-links a, .mobile-nav a').forEach(link => {
@@ -708,3 +696,6 @@
 
 </body>
 </html>
+
+
+
