@@ -542,6 +542,22 @@
       background: var(--cream);
     }
 
+    .history-band {
+      background: linear-gradient(135deg, #120904 0%, #241208 45%, #3a1d0d 100%);
+    }
+
+    .history-band .sec-label {
+      color: var(--gold-lt);
+    }
+
+    .history-band .sec-title {
+      color: #fff;
+    }
+
+    .history-band .sec-line {
+      background: linear-gradient(to right, var(--gold-lt), #fff2cf);
+    }
+
     .timeline {
       position: relative;
       max-width: 860px;
@@ -557,6 +573,10 @@
       width: 2px;
       background: linear-gradient(to bottom, var(--gold), transparent);
       transform: translateX(-50%);
+    }
+
+    .history-band .timeline::before {
+      background: linear-gradient(to bottom, var(--gold-lt), rgba(240, 180, 41, 0));
     }
 
     .tl-item {
@@ -593,6 +613,11 @@
       transform: translateX(-50%);
     }
 
+    .history-band .tl-dot {
+      border-color: #2b1509;
+      box-shadow: 0 0 0 3px rgba(240, 180, 41, .35);
+    }
+
     .tl-year {
       font-family: 'Outfit', sans-serif;
       font-size: 1.4rem;
@@ -601,11 +626,19 @@
       margin-bottom: 4px;
     }
 
+    .history-band .tl-year {
+      color: #fff;
+    }
+
     .tl-era {
       font-size: 0.75rem;
       color: var(--soft);
       text-transform: uppercase;
       letter-spacing: .1em;
+    }
+
+    .history-band .tl-era {
+      color: rgba(255, 255, 255, .58);
     }
 
     .tl-card {
@@ -616,6 +649,13 @@
       border-top: 3px solid var(--gold);
     }
 
+    .history-band .tl-card {
+      background: rgba(255, 255, 255, .06);
+      border-top-color: var(--gold-lt);
+      box-shadow: 0 10px 28px rgba(0, 0, 0, .22);
+      backdrop-filter: blur(8px);
+    }
+
     .tl-card-title {
       font-weight: 700;
       color: var(--text);
@@ -623,10 +663,18 @@
       margin-bottom: 8px;
     }
 
+    .history-band .tl-card-title {
+      color: #fff;
+    }
+
     .tl-card-text {
       font-size: 0.87rem;
       color: var(--soft);
       line-height: 1.7;
+    }
+
+    .history-band .tl-card-text {
+      color: rgba(255, 255, 255, .72);
     }
 
     /* ?? CULTURE GRID ?? */
@@ -640,13 +688,14 @@
       background: #fff;
       border-radius: 12px;
       overflow: hidden;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, .08);
-      transition: transform .25s, box-shadow .25s;
+      box-shadow: 0 8px 24px rgba(8, 4, 2, .10);
+      transition: transform .28s ease, box-shadow .28s ease, filter .28s ease;
     }
 
     .culture-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 12px 32px rgba(0, 0, 0, .13);
+      transform: translateY(-10px);
+      box-shadow: 0 20px 42px rgba(8, 4, 2, .20);
+      filter: saturate(1.02);
     }
 
     .culture-img {
@@ -671,9 +720,8 @@
       padding: 22px;
     }
 
-    .culture-icon {
-      font-size: 2rem;
-      margin-bottom: 10px;
+    .culture-body .culture-icon {
+      display: none;
     }
 
     .culture-title {
@@ -1510,7 +1558,7 @@
   </div>
 
   <!-- ?? HISTORY TIMELINE ?? -->
-  <div class="sec-full bg-cream">
+  <div class="sec-full bg-cream history-band">
     <div class="sec" style="padding-top:0;padding-bottom:0;">
       <div class="sec-hdr">
         <div class="sec-label">Our Story</div>
