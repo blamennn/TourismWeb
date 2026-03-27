@@ -364,11 +364,20 @@
       justify-content: center;
       text-align: center;
       cursor: pointer;
-      transition: background .18s;
+      transition: all .25s ease;
+      background: var(--gold);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, .15);
     }
 
     .strip-item:hover {
-      background: var(--cream);
+      background: var(--gold);
+      transform: translateY(-4px) scale(1.05);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, .25);
+    }
+
+    .strip-item:hover .strip-lbl,
+    .strip-item:hover .strip-val {
+      color: var(--dark);
     }
 
     .strip-item:last-child {
@@ -384,14 +393,14 @@
       font-size: clamp(0.58rem, 1vw, 0.68rem);
       text-transform: uppercase;
       letter-spacing: .1em;
-      color: var(--soft);
+      color: #fff;
       font-weight: 600;
     }
 
     .strip-val {
       font-size: clamp(0.75rem, 1.3vw, 0.88rem);
       font-weight: 700;
-      color: var(--text);
+      color: #fff;
       margin-top: 2px;
     }
 
@@ -404,14 +413,15 @@
       font-size: clamp(0.8rem, 1.5vw, 0.9rem);
       padding: clamp(10px, 2vw, 13px) clamp(18px, 3vw, 28px);
       border-radius: 4px;
-      transition: all .2s;
+      transition: all .25s ease;
       box-shadow: 0 4px 20px rgba(212, 148, 10, .3);
     }
 
     .btn-gold:hover {
       background: var(--gold-lt);
       color: var(--dark);
-      transform: translateY(-2px);
+      transform: translateY(-4px) scale(1.05);
+      box-shadow: 0 8px 28px rgba(212, 148, 10, .5);
     }
 
     .btn-ghost {
@@ -423,12 +433,14 @@
       padding: clamp(9px, 2vw, 12px) clamp(16px, 3vw, 26px);
       border-radius: 4px;
       border: 1.5px solid rgba(255, 255, 255, .4);
-      transition: all .2s;
+      transition: all .25s ease;
     }
 
     .btn-ghost:hover {
       border-color: var(--gold-lt);
       color: var(--gold-lt);
+      transform: translateY(-4px) scale(1.05);
+      box-shadow: 0 6px 20px rgba(240, 180, 41, .3);
     }
 
     .btn-teal {
@@ -439,12 +451,13 @@
       font-size: clamp(0.8rem, 1.5vw, 0.9rem);
       padding: clamp(10px, 2vw, 13px) clamp(18px, 3vw, 28px);
       border-radius: 4px;
-      transition: all .2s;
+      transition: all .25s ease;
     }
 
     .btn-teal:hover {
       background: var(--teal-lt);
-      transform: translateY(-2px);
+      transform: translateY(-4px) scale(1.05);
+      box-shadow: 0 8px 24px rgba(26, 154, 122, .4);
     }
 
     .btn-dark {
@@ -455,11 +468,13 @@
       font-size: clamp(0.8rem, 1.4vw, 0.88rem);
       padding: clamp(9px, 2vw, 11px) clamp(16px, 2.5vw, 24px);
       border-radius: 4px;
-      transition: all .2s;
+      transition: all .25s ease;
     }
 
     .btn-dark:hover {
       background: var(--brown);
+      transform: translateY(-4px) scale(1.05);
+      box-shadow: 0 6px 20px rgba(122, 59, 16, .4);
     }
 
     /* ══ SECTION SHELLS ══ */
