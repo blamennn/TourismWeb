@@ -543,49 +543,156 @@
     }
 
     .history-band {
-      background: linear-gradient(135deg, #120904 0%, #241208 45%, #3a1d0d 100%);
+      position: relative;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 12% 18%, rgba(240, 180, 41, .24), transparent 22%),
+        radial-gradient(circle at 88% 10%, rgba(255, 255, 255, .11), transparent 18%),
+        radial-gradient(circle at 50% 82%, rgba(201, 113, 42, .18), transparent 28%),
+        linear-gradient(140deg, #130905 0%, #261109 38%, #3f1d0e 72%, #1d0b04 100%);
+    }
+
+    .history-band::before,
+    .history-band::after {
+      content: '';
+      position: absolute;
+      width: 320px;
+      aspect-ratio: 1;
+      border-radius: 50%;
+      pointer-events: none;
+      filter: blur(10px);
+      opacity: .8;
+    }
+
+    .history-band::before {
+      top: -120px;
+      left: -100px;
+      background: radial-gradient(circle, rgba(255, 215, 143, .28) 0%, rgba(255, 215, 143, 0) 70%);
+    }
+
+    .history-band::after {
+      right: -120px;
+      bottom: -140px;
+      background: radial-gradient(circle, rgba(255, 255, 255, .14) 0%, rgba(255, 255, 255, 0) 72%);
+    }
+
+    .history-band .sec {
+      position: relative;
+      z-index: 1;
     }
 
     .history-band .sec-label {
-      color: var(--gold-lt);
+      color: rgba(255, 233, 184, .92);
+      letter-spacing: .24em;
     }
 
     .history-band .sec-title {
-      color: #fff;
+      color: #fffdf9;
+      text-shadow: 0 10px 32px rgba(0, 0, 0, .24);
     }
 
     .history-band .sec-line {
-      background: linear-gradient(to right, var(--gold-lt), #fff2cf);
+      background: linear-gradient(to right, rgba(255, 225, 153, .9), rgba(255, 255, 255, .85));
+      box-shadow: 0 0 22px rgba(255, 214, 109, .24);
+    }
+
+    .history-shell {
+      position: relative;
+      z-index: 1;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 8px 40px 12px;
+    }
+
+    .history-shell::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 40px;
+      background: linear-gradient(180deg, rgba(255, 255, 255, .06), rgba(255, 255, 255, .02));
+      border: 1px solid rgba(255, 255, 255, .08);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, .12);
+      pointer-events: none;
     }
 
     .timeline {
       position: relative;
-      max-width: 860px;
+      max-width: 980px;
       margin: 0 auto;
+      padding: 12px 0 8px;
     }
 
-    .timeline::before {
+    .timeline::before,
+    .timeline::after {
       content: '';
       position: absolute;
       left: 50%;
-      top: 0;
-      bottom: 0;
-      width: 2px;
-      background: linear-gradient(to bottom, var(--gold), transparent);
       transform: translateX(-50%);
+      pointer-events: none;
     }
 
-    .history-band .timeline::before {
-      background: linear-gradient(to bottom, var(--gold-lt), rgba(240, 180, 41, 0));
+    .timeline::before {
+      top: 0;
+      bottom: 0;
+      width: 1px;
+      background: linear-gradient(to bottom,
+          rgba(255, 226, 158, .1),
+          rgba(255, 214, 109, .95) 18%,
+          rgba(255, 196, 77, .52) 58%,
+          rgba(255, 226, 158, .08));
+      box-shadow: 0 0 18px rgba(255, 196, 77, .34);
+    }
+
+    .timeline::after {
+      top: 0;
+      bottom: 0;
+      width: 16px;
+      background: linear-gradient(to bottom, rgba(255, 206, 92, .16), rgba(255, 206, 92, 0));
+      filter: blur(16px);
+      opacity: .72;
     }
 
     .tl-item {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 48px;
-      margin-bottom: 48px;
-      align-items: start;
+      grid-template-columns: minmax(240px, .84fr) minmax(0, 1fr);
+      gap: clamp(28px, 5vw, 72px);
+      margin-bottom: 38px;
+      align-items: center;
       position: relative;
+    }
+
+    .tl-item:last-child {
+      margin-bottom: 0;
+    }
+
+    .tl-year-col,
+    .tl-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .tl-year-col {
+      padding: 26px 28px;
+      border-radius: 30px;
+      background: linear-gradient(160deg, rgba(255, 255, 255, .12), rgba(255, 255, 255, .05));
+      border: 1px solid rgba(255, 255, 255, .15);
+      box-shadow:
+        0 28px 55px rgba(0, 0, 0, .24),
+        inset 0 1px 0 rgba(255, 255, 255, .2),
+        inset 0 -14px 28px rgba(255, 255, 255, .03);
+      backdrop-filter: blur(20px) saturate(150%);
+      -webkit-backdrop-filter: blur(20px) saturate(150%);
+      overflow: hidden;
+    }
+
+    .tl-year-col::before {
+      content: '';
+      position: absolute;
+      inset: 1px 1px auto;
+      height: 48%;
+      border-radius: 29px 29px 24px 24px;
+      background: linear-gradient(180deg, rgba(255, 255, 255, .2), rgba(255, 255, 255, 0));
+      pointer-events: none;
     }
 
     .tl-item:nth-child(even) .tl-content {
@@ -599,82 +706,161 @@
       order: 1;
     }
 
-    /* Center dot */
+    .tl-item:nth-child(even) .tl-card-meta,
+    .tl-item:nth-child(even) .tl-card-features {
+      justify-content: flex-end;
+    }
+
     .tl-dot {
       position: absolute;
       left: 50%;
-      top: 6px;
-      width: 14px;
-      height: 14px;
+      top: 50%;
+      width: 18px;
+      height: 18px;
       border-radius: 50%;
-      background: var(--gold);
-      border: 3px solid #fff;
-      box-shadow: 0 0 0 3px var(--gold);
-      transform: translateX(-50%);
-    }
-
-    .history-band .tl-dot {
-      border-color: #2b1509;
-      box-shadow: 0 0 0 3px rgba(240, 180, 41, .35);
+      background: radial-gradient(circle at 35% 35%, #ffeeb6 0 22%, #f0b429 23% 56%, #8c4b11 100%);
+      border: 1px solid rgba(255, 244, 209, .62);
+      box-shadow:
+        0 0 0 5px rgba(240, 180, 41, .12),
+        0 0 26px rgba(240, 180, 41, .42),
+        inset 0 1px 4px rgba(255, 255, 255, .4);
+      transform: translate(-50%, -50%);
+      z-index: 2;
     }
 
     .tl-year {
+      position: relative;
       font-family: 'Outfit', sans-serif;
-      font-size: 1.4rem;
+      font-size: clamp(1.5rem, 2.6vw, 2.15rem);
       font-weight: 700;
-      color: var(--brown);
-      margin-bottom: 4px;
-    }
-
-    .history-band .tl-year {
       color: #fff;
+      margin-bottom: 6px;
+      line-height: 1.08;
+      text-shadow: 0 10px 26px rgba(0, 0, 0, .22);
     }
 
     .tl-era {
-      font-size: 0.75rem;
-      color: var(--soft);
+      position: relative;
+      font-size: 0.76rem;
+      color: rgba(255, 248, 228, .72);
       text-transform: uppercase;
-      letter-spacing: .1em;
-    }
-
-    .history-band .tl-era {
-      color: rgba(255, 255, 255, .58);
+      letter-spacing: .18em;
+      font-weight: 600;
     }
 
     .tl-card {
-      background: #fff;
-      border-radius: 10px;
-      padding: 22px 24px;
-      box-shadow: 0 4px 18px rgba(0, 0, 0, .07);
-      border-top: 3px solid var(--gold);
+      position: relative;
+      background: linear-gradient(155deg, rgba(255, 255, 255, .16), rgba(255, 255, 255, .05));
+      border-radius: 30px;
+      padding: 24px 26px 22px;
+      border: 1px solid rgba(255, 255, 255, .16);
+      box-shadow:
+        0 30px 60px rgba(0, 0, 0, .28),
+        inset 0 1px 0 rgba(255, 255, 255, .22),
+        inset 0 -16px 34px rgba(255, 255, 255, .03);
+      backdrop-filter: blur(22px) saturate(155%);
+      -webkit-backdrop-filter: blur(22px) saturate(155%);
+      overflow: hidden;
+      transition: transform .28s ease, box-shadow .28s ease, border-color .28s ease;
     }
 
-    .history-band .tl-card {
-      background: rgba(255, 255, 255, .06);
-      border-top-color: var(--gold-lt);
-      box-shadow: 0 10px 28px rgba(0, 0, 0, .22);
-      backdrop-filter: blur(8px);
+    .tl-card::before {
+      content: '';
+      position: absolute;
+      inset: 1px 1px auto;
+      height: 54%;
+      border-radius: 29px 29px 24px 24px;
+      background: linear-gradient(180deg, rgba(255, 255, 255, .18), rgba(255, 255, 255, 0));
+      pointer-events: none;
+    }
+
+    .tl-card::after {
+      content: '';
+      position: absolute;
+      inset: auto 24px 0;
+      height: 1px;
+      background: linear-gradient(90deg, rgba(255, 213, 115, .64), rgba(255, 255, 255, 0));
+      opacity: .68;
+      pointer-events: none;
+    }
+
+    .tl-item:hover .tl-card,
+    .tl-item:hover .tl-year-col {
+      transform: translateY(-6px);
+      box-shadow:
+        0 38px 72px rgba(0, 0, 0, .32),
+        inset 0 1px 0 rgba(255, 255, 255, .26),
+        inset 0 -16px 34px rgba(255, 255, 255, .03);
+      border-color: rgba(255, 235, 183, .24);
+    }
+
+    .tl-card-meta {
+      position: relative;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+
+    .tl-card-chip,
+    .tl-feature-pill {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 28px;
+      padding: 0 12px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, .1);
+      border: 1px solid rgba(255, 255, 255, .16);
+      color: rgba(255, 244, 219, .88);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, .14);
+      backdrop-filter: blur(14px) saturate(150%);
+      -webkit-backdrop-filter: blur(14px) saturate(150%);
+    }
+
+    .tl-card-chip {
+      font-size: 0.67rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .16em;
+    }
+
+    .tl-card-signal {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: radial-gradient(circle, #fff4cf 0%, #f0b429 72%);
+      box-shadow: 0 0 18px rgba(240, 180, 41, .6);
+      flex: 0 0 auto;
     }
 
     .tl-card-title {
+      position: relative;
       font-weight: 700;
-      color: var(--text);
-      font-size: 0.98rem;
-      margin-bottom: 8px;
-    }
-
-    .history-band .tl-card-title {
-      color: #fff;
+      color: #fffdf7;
+      font-size: 1.12rem;
+      margin-bottom: 10px;
+      line-height: 1.3;
     }
 
     .tl-card-text {
-      font-size: 0.87rem;
-      color: var(--soft);
-      line-height: 1.7;
+      position: relative;
+      font-size: 0.92rem;
+      color: rgba(255, 247, 232, .82);
+      line-height: 1.78;
     }
 
-    .history-band .tl-card-text {
-      color: rgba(255, 255, 255, .72);
+    .tl-card-features {
+      position: relative;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .tl-feature-pill {
+      font-size: 0.74rem;
+      color: rgba(255, 248, 227, .86);
     }
 
     /* ?? CULTURE GRID ?? */
@@ -1410,14 +1596,25 @@
         gap: 36px;
       }
 
+      .history-shell {
+        padding: 8px 20px 12px;
+      }
+
       .timeline::before {
-        left: 20px;
+        left: 24px;
+        transform: none;
+      }
+
+      .timeline::after {
+        left: 24px;
+        transform: none;
       }
 
       .tl-item {
         grid-template-columns: 1fr;
-        padding-left: 48px;
-        gap: 12px;
+        padding-left: 58px;
+        gap: 14px;
+        margin-bottom: 28px;
       }
 
       .tl-item:nth-child(even) .tl-content {
@@ -1431,8 +1628,23 @@
         order: -1;
       }
 
+      .tl-year-col,
+      .tl-card {
+        border-radius: 26px;
+      }
+
+      .tl-year-col {
+        padding: 20px 22px;
+      }
+
+      .tl-card {
+        padding: 20px 22px;
+      }
+
       .tl-dot {
-        left: 20px;
+        left: 24px;
+        top: 28px;
+        transform: translate(-50%, 0);
       }
     }
 
@@ -1454,12 +1666,58 @@
         padding: 60px 20px;
       }
 
+      .history-shell {
+        padding: 6px 8px 0;
+      }
+
       .culture-grid {
         grid-template-columns: 1fr;
       }
 
       .mission-cnt {
         padding: 48px 20px;
+      }
+
+      .tl-item {
+        padding-left: 50px;
+      }
+
+      .timeline::before,
+      .timeline::after,
+      .tl-dot {
+        left: 18px;
+      }
+
+      .tl-year-col,
+      .tl-card {
+        border-radius: 24px;
+      }
+
+      .tl-year-col {
+        padding: 18px 18px;
+      }
+
+      .tl-card {
+        padding: 18px 18px 17px;
+      }
+
+      .tl-card-meta,
+      .tl-card-features,
+      .tl-item:nth-child(even) .tl-card-meta,
+      .tl-item:nth-child(even) .tl-card-features {
+        justify-content: flex-start;
+      }
+
+      .tl-year {
+        font-size: 1.35rem;
+      }
+
+      .tl-card-title {
+        font-size: 1rem;
+      }
+
+      .tl-card-text {
+        font-size: 0.88rem;
       }
     }
   </style>
@@ -1566,7 +1824,7 @@
         <div class="sec-line"></div>
       </div>
     </div>
-    <div style="max-width:1200px;margin:0 auto;padding:0 40px;">
+    <div class="history-shell">
       <div class="timeline">
 
         <div class="tl-item">
@@ -1577,10 +1835,18 @@
           </div>
           <div class="tl-content">
             <div class="tl-card">
+              <div class="tl-card-meta">
+                <span class="tl-card-chip">Origins</span>
+                <span class="tl-card-signal" aria-hidden="true"></span>
+              </div>
               <div class="tl-card-title">The Subanen People</div>
               <div class="tl-card-text">The land now known as Zamboanga Sibugay was originally inhabited by the
                 indigenous Subanen people, who developed their own rich culture, traditions, and governance long before
                 outside contact.</div>
+              <div class="tl-card-features">
+                <span class="tl-feature-pill">Indigenous roots</span>
+                <span class="tl-feature-pill">Ancestral customs</span>
+              </div>
             </div>
           </div>
         </div>
@@ -1593,10 +1859,18 @@
           </div>
           <div class="tl-content">
             <div class="tl-card">
+              <div class="tl-card-meta">
+                <span class="tl-card-chip">Transition</span>
+                <span class="tl-card-signal" aria-hidden="true"></span>
+              </div>
               <div class="tl-card-title">Colonial Influence</div>
               <div class="tl-card-text">During Spanish rule, the region became part of the broader Zamboanga territory.
                 Spanish missionaries influenced coastal communities while indigenous groups maintained their distinct
                 identities inland.</div>
+              <div class="tl-card-features">
+                <span class="tl-feature-pill">Mission influence</span>
+                <span class="tl-feature-pill">Coastal settlements</span>
+              </div>
             </div>
           </div>
         </div>
@@ -1609,10 +1883,18 @@
           </div>
           <div class="tl-content">
             <div class="tl-card">
+              <div class="tl-card-meta">
+                <span class="tl-card-chip">Expansion</span>
+                <span class="tl-card-signal" aria-hidden="true"></span>
+              </div>
               <div class="tl-card-title">Settlement & Growth</div>
               <div class="tl-card-text">Under American administration, the area was incorporated into Zamboanga
                 province. Christian migrants from the Visayas and Luzon began settling, shaping its demographic and
                 cultural landscape.</div>
+              <div class="tl-card-features">
+                <span class="tl-feature-pill">Migration wave</span>
+                <span class="tl-feature-pill">Provincial growth</span>
+              </div>
             </div>
           </div>
         </div>
@@ -1625,9 +1907,17 @@
           </div>
           <div class="tl-content">
             <div class="tl-card">
+              <div class="tl-card-meta">
+                <span class="tl-card-chip">Provincehood</span>
+                <span class="tl-card-signal" aria-hidden="true"></span>
+              </div>
               <div class="tl-card-title">A Province is Born</div>
               <div class="tl-card-text">Zamboanga Sibugay was officially established as a separate province on November
                 7, 2001. Ipil was designated as the provincial capital, marking a new chapter for its people.</div>
+              <div class="tl-card-features">
+                <span class="tl-feature-pill">Republic Act 8973</span>
+                <span class="tl-feature-pill">Capital: Ipil</span>
+              </div>
             </div>
           </div>
         </div>
