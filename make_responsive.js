@@ -187,7 +187,7 @@ files.forEach(file => {
 
   // 2. Inject hamburger button into <nav class="navbar"> right before </nav>
   //    and append the mobile-nav overlay HTML
-  const hamburgerHTML = \`
+  const hamburgerHTML = `
     <!-- Hamburger (mobile) -->
     <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false" style="color: #fff">
       <span></span><span></span><span></span>
@@ -199,13 +199,13 @@ files.forEach(file => {
 
   <!-- Mobile nav drawer -->
   <nav class="mobile-nav" id="mobileNav">
-    <a href="index (1).html" \${file === 'index.html' ? 'class="active"' : ''}>🏠 Home</a>
-    <a href="about.html" \${file === 'about.html' ? 'class="active"' : ''}>📖 About</a>
-    <a href="attractions.html" \${file === 'attractions.html' ? 'class="active"' : ''}>🗺️ Attractions</a>
-    <a href="gallery.html" \${file === 'gallery.html' ? 'class="active"' : ''}>🖼️ Gallery</a>
-    <a href="contact.html" \${file === 'contact.html' ? 'class="active"' : ''}>✉️ Contact</a>
+    <a href="index (1).html" ${file === 'index.html' ? 'class="active"' : ''}>🏠 Home</a>
+    <a href="about.html" ${file === 'about.html' ? 'class="active"' : ''}>📖 About</a>
+    <a href="attractions.html" ${file === 'attractions.html' ? 'class="active"' : ''}>🗺️ Attractions</a>
+    <a href="gallery.html" ${file === 'gallery.html' ? 'class="active"' : ''}>🖼️ Gallery</a>
+    <a href="contact.html" ${file === 'contact.html' ? 'class="active"' : ''}>✉️ Contact</a>
     <a href="index (1).html#motourism" class="moto-anchor">🏍️ Motourism</a>
-  </nav>\`;
+  </nav>`;
 
   content = content.replace('</nav>', hamburgerHTML);
 

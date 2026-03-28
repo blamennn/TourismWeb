@@ -46,8 +46,10 @@
 
     /* Desktop nav links */
     .nav-links { display: flex; align-items: center; gap: 4px; }
-    .nav-links a { font-size: clamp(0.75rem, 1.2vw, 0.85rem); font-weight: 500; color: #555; padding: 7px 12px; border-radius: 6px; transition: all .18s; white-space: nowrap; }
-    .nav-links a:hover, .nav-links a.active { color: var(--brown); background: rgba(122, 59, 16, 0.07); }
+    .nav-links a { font-size: clamp(0.75rem, 1.2vw, 0.85rem); font-weight: 500; color: #555; padding: 7px 12px; border-radius: 6px; transition: all .18s; white-space: nowrap; position: relative; z-index: 0; overflow: hidden; isolation: isolate; }
+    .nav-links a:not(.moto-anchor)::before { content: ''; position: absolute; inset: 4px 6px; border-radius: 999px; background: #d4940a; opacity: 0; transform: scale(.72); transition: transform .22s ease, opacity .22s ease, box-shadow .22s ease; box-shadow: 0 8px 18px rgba(212,148,10,.32); z-index: -1; }
+    .nav-links a:hover, .nav-links a.active { color: #fff; background: transparent; }
+    .nav-links a:not(.moto-anchor):hover::before, .nav-links a:not(.moto-anchor).active::before { opacity: 1; transform: scale(1); }
     .nav-links a.moto-anchor { background: var(--teal); color: #fff; border-radius: 20px; font-weight: 600; padding: 7px 16px; margin-left: 4px; }
     .nav-links a.moto-anchor:hover { background: var(--teal-lt); color: #fff; }
 
@@ -62,8 +64,10 @@
     /* Mobile nav drawer */
     .mobile-nav { display: none; position: fixed; top: var(--nav-h); left: 0; right: 0; z-index: 998; background: rgba(255, 255, 255, 0.98); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(0, 0, 0, 0.08); box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12); flex-direction: column; padding: 16px; gap: 4px; transform: translateY(-10px); opacity: 0; transition: transform .25s, opacity .25s; }
     .mobile-nav.open { display: flex; transform: translateY(0); opacity: 1; }
-    .mobile-nav a { font-size: 0.95rem; font-weight: 500; color: var(--text); padding: 12px 16px; border-radius: 8px; transition: background .18s; }
-    .mobile-nav a:hover, .mobile-nav a.active { background: var(--gray); color: var(--brown); }
+    .mobile-nav a { font-size: 0.95rem; font-weight: 500; color: var(--text); padding: 12px 16px; border-radius: 8px; transition: background .18s; position: relative; z-index: 0; overflow: hidden; isolation: isolate; }
+    .mobile-nav a:not(.moto-anchor)::before { content: ''; position: absolute; inset: 6px 10px; border-radius: 999px; background: #d4940a; opacity: 0; transform: scale(.82); transition: transform .22s ease, opacity .22s ease, box-shadow .22s ease; box-shadow: 0 8px 18px rgba(212,148,10,.28); z-index: -1; }
+    .mobile-nav a:hover, .mobile-nav a.active { background: transparent; color: #fff; }
+    .mobile-nav a:not(.moto-anchor):hover::before, .mobile-nav a:not(.moto-anchor).active::before { opacity: 1; transform: scale(1); }
     .mobile-nav a.moto-anchor { background: var(--teal); color: #fff; border-radius: 8px; font-weight: 600; margin-top: 6px; text-align: center; }
     .mobile-nav a.moto-anchor:hover { background: var(--teal-lt); }
 
@@ -76,42 +80,6 @@
       .hamburger { display: flex; }
     }
 
-    /* â”€â”€ PAGE BANNER â”€â”€ */
-    .page-banner {
-      position: relative; height: 420px; margin-top: var(--nav-h);
-      display: flex; align-items: center; justify-content: center;
-      background: url('images/attractions-banner.jpg') center center / cover no-repeat;
-      text-align: center;
-    }
-    .banner-fb {
-      position: absolute; inset: 0;
-      background: linear-gradient(135deg, #0a1a2a 0%, #1a4a6a 55%, #2a7aaa 100%);
-    }
-    .banner-ov { position: absolute; inset: 0; background: rgba(8,16,28,0.62); }
-    .banner-cnt { position: relative; z-index: 2; padding: 0 24px; }
-    .banner-eyebrow {
-      font-size: 0.75rem; letter-spacing: .22em; text-transform: uppercase;
-      color: var(--gold-lt); font-weight: 600; margin-bottom: 14px;
-      opacity: 0; animation: fadeUp .6s .2s forwards;
-    }
-    .banner-title {
-      font-family: 'Outfit', sans-serif;
-      font-size: clamp(2.8rem, 7vw, 5.5rem); font-weight: 700;
-      color: #fff; line-height: 1; margin-bottom: 16px;
-      opacity: 0; animation: fadeUp .6s .35s forwards;
-    }
-    .banner-sub {
-      color: rgba(255,255,255,.6); font-size: 1rem; font-weight: 300;
-      max-width: 520px; margin: 0 auto;
-      opacity: 0; animation: fadeUp .6s .5s forwards;
-    }
-    .banner-cut {
-      position: absolute; bottom: -1px; left: 0; right: 0;
-      height: 60px; background: #fff;
-      clip-path: polygon(0 100%, 100% 0, 100% 100%);
-    }
-    @keyframes fadeUp { from { opacity:0; transform:translateY(18px); } to { opacity:1; transform:translateY(0); } }
-
     /* â”€â”€ BUTTONS â”€â”€ */
     .btn-gold { display: inline-block; background: var(--gold); color: #fff; font-weight: 600; font-size: 0.9rem; padding: 13px 28px; border-radius: 4px; transition: all .25s ease; box-shadow: 0 4px 18px rgba(212,148,10,.3); }
     .btn-gold:hover { background: var(--gold-lt); color: var(--dark); transform: translateY(-4px) scale(1.05); box-shadow: 0 8px 28px rgba(212, 148, 10, .5); }
@@ -123,6 +91,7 @@
     /* â”€â”€ SECTION SHELLS â”€â”€ */
     .sec { padding: 80px 40px; max-width: 1200px; margin: 0 auto; }
     .sec-full { padding: 80px 40px; }
+    .spots-start { padding-top: calc(var(--nav-h) + 32px); }
     .sec-hdr { text-align: center; margin-bottom: 52px; }
     .sec-label { font-size: 0.72rem; letter-spacing: .2em; text-transform: uppercase; color: var(--gold); font-weight: 700; margin-bottom: 10px; }
     .sec-title { font-family: 'Outfit', sans-serif; font-size: clamp(2rem, 4vw, 2.8rem); font-weight: 700; color: var(--text); line-height: 1.2; margin-bottom: 14px; }
@@ -255,22 +224,6 @@
     .month-status { font-size: 0.65rem; color: rgba(255,255,255,.35); }
     .month-box.peak .month-status { color: var(--gold); font-weight: 600; }
 
-    /* â”€â”€ MOTOURISM CALLOUT â”€â”€ */
-    .moto-callout {
-      position: relative; min-height: 340px; display: flex; align-items: center;
-      background: url('images/moto-bg.jpg') center center / cover no-repeat;
-    }
-    .moto-fb { position: absolute; inset: 0; background: linear-gradient(120deg,#0a1a14,#1a4a3a 55%,#2d7a5a); }
-    .moto-ov { position: absolute; inset: 0; background: linear-gradient(to right, rgba(5,15,10,.88) 0%, rgba(5,15,10,.45) 55%, rgba(5,15,10,.1) 100%); }
-    .moto-callout-cnt {
-      position: relative; z-index: 2; padding: 64px 72px; max-width: 620px;
-    }
-    .moto-lbl { font-size: 0.72rem; letter-spacing: .2em; text-transform: uppercase; color: #5ee0b0; font-weight: 700; margin-bottom: 12px; }
-    .moto-title { font-family: 'Outfit', sans-serif; font-size: clamp(1.8rem, 3.5vw, 3rem); font-weight: 700; color: #fff; line-height: 1.15; margin-bottom: 16px; }
-    .moto-desc { color: rgba(255,255,255,.65); font-size: 0.95rem; line-height: 1.8; margin-bottom: 28px; }
-    .btn-teal { display: inline-block; background: #1a9a7a; color: #fff; font-weight: 600; font-size: 0.9rem; padding: 13px 28px; border-radius: 4px; transition: all .2s; }
-    .btn-teal:hover { background: #22b890; transform: translateY(-2px); }
-
     /* â”€â”€ CTA â”€â”€ */
     .cta-band { background: var(--cream); padding: 80px 40px; text-align: center; }
     .cta-title { font-family: 'Outfit', sans-serif; font-size: clamp(2rem, 4vw, 3rem); font-weight: 700; color: var(--text); margin-bottom: 14px; }
@@ -300,7 +253,6 @@
       .nav-links a { font-size: 0.75rem; padding: 6px 8px; }
       .sec { padding: 60px 20px; }
       .spots-grid { grid-template-columns: 1fr; }
-      .moto-callout-cnt { padding: 48px 24px; }
       .months-grid { grid-template-columns: repeat(3,1fr); }
     }
   </style>
@@ -341,21 +293,8 @@
     <a href="#motourism" class="moto-anchor">MOTOURISM</a>
   </nav>
 
-  <!-- â”€â”€ PAGE BANNER â”€â”€ -->
-  <!-- Place your photo as images/attractions-banner.jpg -->
-  <div class="page-banner">
-    <div class="banner-fb"></div>
-    <div class="banner-ov"></div>
-    <div class="banner-cnt">
-      <div class="banner-eyebrow">Things to See &amp; Do</div>
-      <div class="banner-title">Attractions</div>
-      <div class="banner-sub">Explore the best tourist spots Zamboanga Sibugay has to offer</div>
-    </div>
-    <div class="banner-cut"></div>
-  </div>
-
   <!-- â”€â”€ SPOTS SECTION â”€â”€ -->
-  <div class="sec">
+  <div class="sec spots-start">
     <div class="sec-hdr">
       <div class="sec-label">Tourist Spots</div>
       <div class="sec-title">Places to Visit</div>
@@ -594,17 +533,6 @@
     </div>
   </div>
 
-  <!-- ——— MOTOURISM CALLOUT ——— -->
-  <section class="moto-callout">
-    <div class="moto-fb"></div>
-    <div class="moto-ov"></div>
-    <div class="moto-callout-cnt">
-      <div class="moto-lbl">Motourism</div>
-      <div class="moto-title">Plan Your Riding Route</div>
-      <div class="moto-desc">Are you a motourist or riding group visiting the province? Check our dedicated Motourism page for mapped routes, first stop guides, rider tips, and staycation options.</div>
-      <a href="motourism.html" class="btn-teal">Go to Motourism Page</a>
-    </div>
-  </section>
   <!-- CTA -->
   <div class="cta-band">
     <div class="cta-title">Plan Your Visit</div>

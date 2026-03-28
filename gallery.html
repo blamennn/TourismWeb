@@ -28,7 +28,7 @@
     a { text-decoration: none; }
     img { max-width: 100%; display: block; }
 
-    /* ── NAVBAR ── */
+    /* Ã¢â€â‚¬Ã¢â€â‚¬ NAVBAR Ã¢â€â‚¬Ã¢â€â‚¬ */
     .navbar {
       position: fixed; top: 0; left: 0; right: 0; z-index: 999;
       height: var(--nav-h);
@@ -46,8 +46,10 @@
 
     /* Desktop nav links */
     .nav-links { display: flex; align-items: center; gap: 4px; }
-    .nav-links a { font-size: clamp(0.75rem, 1.2vw, 0.85rem); font-weight: 500; color: #555; padding: 7px 12px; border-radius: 6px; transition: all .18s; white-space: nowrap; }
-    .nav-links a:hover, .nav-links a.active { color: var(--brown); background: rgba(122, 59, 16, 0.07); }
+    .nav-links a { font-size: clamp(0.75rem, 1.2vw, 0.85rem); font-weight: 500; color: #555; padding: 7px 12px; border-radius: 6px; transition: all .18s; white-space: nowrap; position: relative; z-index: 0; overflow: hidden; isolation: isolate; }
+    .nav-links a:not(.moto-anchor)::before { content: ''; position: absolute; inset: 4px 6px; border-radius: 999px; background: #d4940a; opacity: 0; transform: scale(.72); transition: transform .22s ease, opacity .22s ease, box-shadow .22s ease; box-shadow: 0 8px 18px rgba(212,148,10,.32); z-index: -1; }
+    .nav-links a:hover, .nav-links a.active { color: #fff; background: transparent; }
+    .nav-links a:not(.moto-anchor):hover::before, .nav-links a:not(.moto-anchor).active::before { opacity: 1; transform: scale(1); }
     .nav-links a.moto-anchor { background: var(--teal); color: #fff; border-radius: 20px; font-weight: 600; padding: 7px 16px; margin-left: 4px; }
     .nav-links a.moto-anchor:hover { background: var(--teal-lt); color: #fff; }
 
@@ -62,8 +64,10 @@
     /* Mobile nav drawer */
     .mobile-nav { display: none; position: fixed; top: var(--nav-h); left: 0; right: 0; z-index: 998; background: rgba(255, 255, 255, 0.98); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(0, 0, 0, 0.08); box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12); flex-direction: column; padding: 16px; gap: 4px; transform: translateY(-10px); opacity: 0; transition: transform .25s, opacity .25s; }
     .mobile-nav.open { display: flex; transform: translateY(0); opacity: 1; }
-    .mobile-nav a { font-size: 0.95rem; font-weight: 500; color: var(--text); padding: 12px 16px; border-radius: 8px; transition: background .18s; }
-    .mobile-nav a:hover, .mobile-nav a.active { background: var(--gray); color: var(--brown); }
+    .mobile-nav a { font-size: 0.95rem; font-weight: 500; color: var(--text); padding: 12px 16px; border-radius: 8px; transition: background .18s; position: relative; z-index: 0; overflow: hidden; isolation: isolate; }
+    .mobile-nav a:not(.moto-anchor)::before { content: ''; position: absolute; inset: 6px 10px; border-radius: 999px; background: #d4940a; opacity: 0; transform: scale(.82); transition: transform .22s ease, opacity .22s ease, box-shadow .22s ease; box-shadow: 0 8px 18px rgba(212,148,10,.28); z-index: -1; }
+    .mobile-nav a:hover, .mobile-nav a.active { background: transparent; color: #fff; }
+    .mobile-nav a:not(.moto-anchor):hover::before, .mobile-nav a:not(.moto-anchor).active::before { opacity: 1; transform: scale(1); }
     .mobile-nav a.moto-anchor { background: var(--teal); color: #fff; border-radius: 8px; font-weight: 600; margin-top: 6px; text-align: center; }
     .mobile-nav a.moto-anchor:hover { background: var(--teal-lt); }
 
@@ -76,54 +80,19 @@
       .hamburger { display: flex; }
     }
 
-    /* ── PAGE BANNER ── */
-    .page-banner {
-      position: relative; height: 420px; margin-top: var(--nav-h);
-      display: flex; align-items: center; justify-content: center;
-      background: url('images/gallery-banner.jpg') center center / cover no-repeat;
-      text-align: center;
-    }
-    .banner-fb {
-      position: absolute; inset: 0;
-      background: linear-gradient(135deg, #0a0a1a 0%, #1a1a4a 55%, #3a3a8a 100%);
-    }
-    .banner-ov { position: absolute; inset: 0; background: rgba(5,5,20,0.65); }
-    .banner-cnt { position: relative; z-index: 2; padding: 0 24px; }
-    .banner-eyebrow {
-      font-size: 0.75rem; letter-spacing: .22em; text-transform: uppercase;
-      color: var(--gold-lt); font-weight: 600; margin-bottom: 14px;
-      opacity: 0; animation: fadeUp .6s .2s forwards;
-    }
-    .banner-title {
-      font-family: 'Outfit', sans-serif;
-      font-size: clamp(2.8rem, 7vw, 5.5rem); font-weight: 700;
-      color: #fff; line-height: 1; margin-bottom: 16px;
-      opacity: 0; animation: fadeUp .6s .35s forwards;
-    }
-    .banner-sub {
-      color: rgba(255,255,255,.6); font-size: 1rem; font-weight: 300;
-      max-width: 520px; margin: 0 auto;
-      opacity: 0; animation: fadeUp .6s .5s forwards;
-    }
-    .banner-cut {
-      position: absolute; bottom: -1px; left: 0; right: 0;
-      height: 60px; background: #fff;
-      clip-path: polygon(0 100%, 100% 0, 100% 100%);
-    }
-    @keyframes fadeUp { from { opacity:0; transform:translateY(18px); } to { opacity:1; transform:translateY(0); } }
 
-    /* ── BUTTONS ── */
+    /* Ã¢â€â‚¬Ã¢â€â‚¬ BUTTONS Ã¢â€â‚¬Ã¢â€â‚¬ */
     .btn-gold { display: inline-block; background: var(--gold); color: #fff; font-weight: 600; font-size: 0.9rem; padding: 13px 28px; border-radius: 4px; transition: all .2s; box-shadow: 0 4px 18px rgba(212,148,10,.3); }
     .btn-gold:hover { background: var(--gold-lt); color: var(--dark); transform: translateY(-2px); }
 
-    /* ── SECTIONS ── */
+    /* Ã¢â€â‚¬Ã¢â€â‚¬ SECTIONS Ã¢â€â‚¬Ã¢â€â‚¬ */
     .sec { padding: 80px 40px; max-width: 1300px; margin: 0 auto; }
     .sec-hdr { text-align: center; margin-bottom: 48px; }
     .sec-label { font-size: 0.72rem; letter-spacing: .2em; text-transform: uppercase; color: var(--gold); font-weight: 700; margin-bottom: 10px; }
     .sec-title { font-family: 'Outfit', sans-serif; font-size: clamp(2rem, 4vw, 2.8rem); font-weight: 700; color: var(--text); line-height: 1.2; margin-bottom: 14px; }
     .sec-line { width: 48px; height: 3px; margin: 0 auto; background: linear-gradient(to right, var(--gold), var(--brown)); border-radius: 2px; }
 
-    /* ── FILTER TABS ── */
+    /* Ã¢â€â‚¬Ã¢â€â‚¬ FILTER TABS Ã¢â€â‚¬Ã¢â€â‚¬ */
     .filter-bar {
       display: flex; justify-content: center;
       gap: 10px; flex-wrap: wrap; margin-bottom: 44px;
@@ -138,7 +107,7 @@
     .filter-btn:hover { border-color: var(--gold); color: var(--brown); }
     .filter-btn.active { background: var(--gold); color: #fff; border-color: var(--gold); }
 
-    /* ── MASONRY GALLERY GRID ── */
+    /* Ã¢â€â‚¬Ã¢â€â‚¬ MASONRY GALLERY GRID Ã¢â€â‚¬Ã¢â€â‚¬ */
     .gallery-grid {
       columns: 3; column-gap: 18px;
     }
@@ -208,7 +177,7 @@
     .gal-item:hover .gal-zoom { opacity: 1; }
     .gal-zoom:hover { background: rgba(255,255,255,.3); }
 
-    /* ── LIGHTBOX ── */
+    /* Ã¢â€â‚¬Ã¢â€â‚¬ LIGHTBOX Ã¢â€â‚¬Ã¢â€â‚¬ */
     .lightbox {
       position: fixed; inset: 0; z-index: 9999;
       background: rgba(10,5,2,.95); backdrop-filter: blur(8px);
@@ -258,7 +227,7 @@
     .lb-next { right: -60px; }
     .lb-counter { position: absolute; top: -44px; left: 0; color: rgba(255,255,255,.4); font-size: 0.82rem; line-height: 36px; }
 
-    /* ── CTA BAND ── */
+    /* Ã¢â€â‚¬Ã¢â€â‚¬ CTA BAND Ã¢â€â‚¬Ã¢â€â‚¬ */
     .cta-band {
       position: relative; padding: 90px 40px; text-align: center;
       background: url('images/cta-bg.jpg') center / cover no-repeat;
@@ -269,7 +238,7 @@
     .cta-title { font-family: 'Outfit', sans-serif; font-size: clamp(2rem, 4vw, 3.2rem); font-weight: 700; color: #fff; margin-bottom: 14px; }
     .cta-desc { color: rgba(255,255,255,.6); font-size: 0.98rem; max-width: 500px; margin: 0 auto 32px; line-height: 1.8; }
 
-    /* ── FOOTER ── */
+    /* Ã¢â€â‚¬Ã¢â€â‚¬ FOOTER Ã¢â€â‚¬Ã¢â€â‚¬ */
     .footer { background: var(--dark); padding: 40px 40px 24px; text-align: center; }
     .footer-brand { font-family: 'Outfit', sans-serif; font-size: 2rem; font-weight: 700; margin-bottom: 4px; }
     .footer-brand .s { color: var(--gold-lt); }
@@ -280,7 +249,7 @@
     .footer-nav a:hover { color: #fff; }
     .footer-copy { color: rgba(255,255,255,.15); font-size: 0.75rem; }
 
-    /* ── RESPONSIVE ── */
+    /* Ã¢â€â‚¬Ã¢â€â‚¬ RESPONSIVE Ã¢â€â‚¬Ã¢â€â‚¬ */
     @media (max-width: 900px) { .gallery-grid { columns: 2; } .lb-prev { left: -48px; } .lb-next { right: -48px; } }
     @media (max-width: 640px) {
       .navbar { padding: 0 16px; }
@@ -294,7 +263,7 @@
 </head>
 <body>
 
-  <!-- ── NAVBAR ── -->
+  <!-- Ã¢â€â‚¬Ã¢â€â‚¬ NAVBAR Ã¢â€â‚¬Ã¢â€â‚¬ -->
   <nav class="navbar">
     <div class="nav-logo">
       <img src="images/LOGO.png" alt="SIBUGNGARI" />
@@ -328,20 +297,8 @@
     <a href="#motourism" class="moto-anchor">MOTOURISM</a>
   </nav>
 
-  <!-- ── PAGE BANNER ── -->
-  <div class="page-banner">
-    <div class="banner-fb"></div>
-    <div class="banner-ov"></div>
-    <div class="banner-cnt">
-      <div class="banner-eyebrow">Photos &amp; Scenery</div>
-      <div class="banner-title">Gallery</div>
-      <div class="banner-sub">A visual journey through the beauty of Zamboanga Sibugay</div>
-    </div>
-    <div class="banner-cut"></div>
-  </div>
-
-  <!-- ── GALLERY ── -->
-  <div class="sec">
+  <!-- Ã¢â€â‚¬Ã¢â€â‚¬ GALLERY Ã¢â€â‚¬Ã¢â€â‚¬ -->
+  <div class="sec" style="padding-top: calc(var(--nav-h) + 32px);">
     <div class="sec-hdr">
       <div class="sec-label">Our Photos</div>
       <div class="sec-title">Scenes of Zamboanga Sibugay</div>
@@ -362,127 +319,127 @@
     <!-- Masonry Grid -->
     <div class="gallery-grid" id="galleryGrid">
 
-      <!-- 1 — Buluan Island (tall) -->
+      <!-- 1 Ã¢â‚¬â€ Buluan Island (tall) -->
       <div class="gal-item tall-item" data-cat="beach" data-index="0" onclick="openLightbox(0)">
-        <div class="gal-placeholder tall">🏝️</div>
+        <div class="gal-placeholder tall">Ã°Å¸ÂÂÃ¯Â¸Â</div>
         <img src="Images/Buluan.jpg" alt="Buluan Island" style="display:none" onload="this.previousElementSibling.style.display='none';this.style.display='block';" />
         <div class="gal-overlay"></div>
         <div class="gal-info">
           <div class="gal-tag">Beach</div>
           <div class="gal-name">Buluan Island</div>
         </div>
-        <div class="gal-zoom">🔍</div>
+        <div class="gal-zoom">Ã°Å¸â€Â</div>
       </div>
 
-      <!-- 2 — Stonehills Farm (mid) -->
+      <!-- 2 Ã¢â‚¬â€ Stonehills Farm (mid) -->
       <div class="gal-item" data-cat="nature" data-index="1" onclick="openLightbox(1)">
-        <div class="gal-placeholder mid">🌿</div>
+        <div class="gal-placeholder mid">Ã°Å¸Å’Â¿</div>
         <img src="Images/Stonehills.jpg" alt="Stonehills Farm" style="display:none" onload="this.previousElementSibling.style.display='none';this.style.display='block';" />
         <div class="gal-overlay"></div>
         <div class="gal-info">
           <div class="gal-tag">Eco-Farm</div>
           <div class="gal-name">Stonehills Farm</div>
         </div>
-        <div class="gal-zoom">🔍</div>
+        <div class="gal-zoom">Ã°Å¸â€Â</div>
       </div>
 
-      <!-- 3 — Gacbusan Falls (tall) -->
+      <!-- 3 Ã¢â‚¬â€ Gacbusan Falls (tall) -->
       <div class="gal-item" data-cat="nature" data-index="2" onclick="openLightbox(2)">
-        <div class="gal-placeholder tall">💧</div>
+        <div class="gal-placeholder tall">Ã°Å¸â€™Â§</div>
         <img src="Images/Gacbusan Falls.jpg" alt="Gacbusan Falls" style="display:none" onload="this.previousElementSibling.style.display='none';this.style.display='block';" />
         <div class="gal-overlay"></div>
         <div class="gal-info">
           <div class="gal-tag">Nature</div>
           <div class="gal-name">Gacbusan Falls</div>
         </div>
-        <div class="gal-zoom">🔍</div>
+        <div class="gal-zoom">Ã°Å¸â€Â</div>
       </div>
 
-      <!-- 4 — Cultural Festival (mid) -->
+      <!-- 4 Ã¢â‚¬â€ Cultural Festival (mid) -->
       <div class="gal-item" data-cat="culture" data-index="3" onclick="openLightbox(3)">
-        <div class="gal-placeholder mid">🎭</div>
+        <div class="gal-placeholder mid">Ã°Å¸Å½Â­</div>
         <img src="images/festivals.jpg" alt="Cultural Festival" style="display:none" onload="this.previousElementSibling.style.display='none';this.style.display='block';" />
         <div class="gal-overlay"></div>
         <div class="gal-info">
           <div class="gal-tag">Culture</div>
           <div class="gal-name">Cultural Festival</div>
         </div>
-        <div class="gal-zoom">🔍</div>
+        <div class="gal-zoom">Ã°Å¸â€Â</div>
       </div>
 
-      <!-- 5 — Muyong Island (mid) -->
+      <!-- 5 Ã¢â‚¬â€ Muyong Island (mid) -->
       <div class="gal-item" data-cat="beach" data-index="4" onclick="openLightbox(4)">
-        <div class="gal-placeholder mid">🌅</div>
+        <div class="gal-placeholder mid">Ã°Å¸Å’â€¦</div>
         <img src="Images/Muyong.jpg" alt="Kabasalan Bay" style="display:none" onload="this.previousElementSibling.style.display='none';this.style.display='block';" />
         <div class="gal-overlay"></div>
         <div class="gal-info">
           <div class="gal-tag">Beach</div>
           <div class="gal-name">Muyong Island</div>
         </div>
-        <div class="gal-zoom">🔍</div>
+        <div class="gal-zoom">Ã°Å¸â€Â</div>
       </div>
 
-      <!-- 6 — Motourism Route (mid) -->
+      <!-- 6 Ã¢â‚¬â€ Motourism Route (mid) -->
       <div class="gal-item" data-cat="motourism" data-index="5" onclick="openLightbox(5)">
-        <div class="gal-placeholder mid">🏍️</div>
+        <div class="gal-placeholder mid">Ã°Å¸ÂÂÃ¯Â¸Â</div>
         <img src="Images/Riders1.jpg" alt="Motourism Ride" style="display:none" onload="this.previousElementSibling.style.display='none';this.style.display='block';" />
         <div class="gal-overlay"></div>
         <div class="gal-info">
           <div class="gal-tag">Motourism</div>
           <div class="gal-name">Riding the Province</div>
         </div>
-        <div class="gal-zoom">🔍</div>
+        <div class="gal-zoom">Ã°Å¸â€Â</div>
       </div>
 
-      <!-- 7 — Malangas Coal Mines (tall) -->
+      <!-- 7 Ã¢â‚¬â€ Malangas Coal Mines (tall) -->
       <div class="gal-item" data-cat="heritage" data-index="6" onclick="openLightbox(6)">
-        <div class="gal-placeholder tall">⛏️</div>
+        <div class="gal-placeholder tall">Ã¢â€ºÂÃ¯Â¸Â</div>
         <img src="Images/Dalisay Falls.jpg" alt="Dalisay Falls" style="display:none" onload="this.previousElementSibling.style.display='none';this.style.display='block';" />
         <div class="gal-overlay"></div>
         <div class="gal-info">
           <div class="gal-tag">Heritage</div>
           <div class="gal-name">Dalisay</div>
         </div>
-        <div class="gal-zoom">🔍</div>
+        <div class="gal-zoom">Ã°Å¸â€Â</div>
       </div>
 
-      <!-- 8 — Ipil Beach (short) -->
+      <!-- 8 Ã¢â‚¬â€ Ipil Beach (short) -->
       <div class="gal-item" data-cat="beach" data-index="7" onclick="openLightbox(7)">
-        <div class="gal-placeholder short">🏖️</div>
+        <div class="gal-placeholder short">Ã°Å¸Ââ€“Ã¯Â¸Â</div>
         <img src="images/ipil-beach.jpg" alt="Ipil Beach" style="display:none" onload="this.previousElementSibling.style.display='none';this.style.display='block';" />
         <div class="gal-overlay"></div>
         <div class="gal-info">
           <div class="gal-tag">Beach</div>
           <div class="gal-name">Ipil Beach</div>
         </div>
-        <div class="gal-zoom">🔍</div>
+        <div class="gal-zoom">Ã°Å¸â€Â</div>
       </div>
 
-      <!-- 9 — Local Cuisine (short) -->
+      <!-- 9 Ã¢â‚¬â€ Local Cuisine (short) -->
       <div class="gal-item" data-cat="food" data-index="8" onclick="openLightbox(8)">
-        <div class="gal-placeholder short">🍽️</div>
+        <div class="gal-placeholder short">Ã°Å¸ÂÂ½Ã¯Â¸Â</div>
         <img src="images/local-food.jpg" alt="Local Cuisine" style="display:none" onload="this.previousElementSibling.style.display='none';this.style.display='block';" />
         <div class="gal-overlay"></div>
         <div class="gal-info">
           <div class="gal-tag">Food</div>
           <div class="gal-name">Local Cuisine</div>
         </div>
-        <div class="gal-zoom">🔍</div>
+        <div class="gal-zoom">Ã°Å¸â€Â</div>
       </div>
 
-      <!-- 10 — Cathedral (mid) -->
+      <!-- 10 Ã¢â‚¬â€ Cathedral (mid) -->
       <div class="gal-item" data-cat="heritage" data-index="9" onclick="openLightbox(9)">
-        <div class="gal-placeholder mid">⛪</div>
+        <div class="gal-placeholder mid">Ã¢â€ºÂª</div>
         <img src="Images/Cathedral of Saint Joseph the Worker.jpg" alt="Cathedral of Saint Joseph the Worker" style="display:none" onload="this.previousElementSibling.style.display='none';this.style.display='block';" />
         <div class="gal-overlay"></div>
         <div class="gal-info">
           <div class="gal-tag">Heritage</div>
           <div class="gal-name">Cathedral of Saint Joseph the Worker</div>
         </div>
-        <div class="gal-zoom">🔍</div>
+        <div class="gal-zoom">Ã°Å¸â€Â</div>
       </div>
 
-      <!-- 11 — Pandilusan Island (mid) -->
+      <!-- 11 Ã¢â‚¬â€ Pandilusan Island (mid) -->
       <div class="gal-item" data-cat="beach" data-index="10" onclick="openLightbox(10)">
         <div class="gal-placeholder mid"></div>
         <img src="Images/Moro Gulf Sunset.jpg" alt="Moro Gulf Sunset" style="display:none" onload="this.previousElementSibling.style.display='none';this.style.display='block';" />
@@ -491,10 +448,10 @@
           <div class="gal-tag">Coastline</div>
           <div class="gal-name">Pandilusan Island</div>
         </div>
-        <div class="gal-zoom">🔍</div>
+        <div class="gal-zoom">Ã°Å¸â€Â</div>
       </div>
 
-      <!-- 12 — Indigenous Crafts (tall) -->
+      <!-- 12 Ã¢â‚¬â€ Indigenous Crafts (tall) -->
       <div class="gal-item" data-cat="culture" data-index="11" onclick="openLightbox(11)">
         <div class="gal-placeholder tall"></div>
         <img src="Images/Subanen Indigenous Crafts.jpg" alt="Indigenous Arts" style="display:none" onload="this.previousElementSibling.style.display='none';this.style.display='block';" />
@@ -503,55 +460,55 @@
           <div class="gal-tag">Culture</div>
           <div class="gal-name">Subanen Indigenous Crafts</div>
         </div>
-        <div class="gal-zoom">🔍</div>
+        <div class="gal-zoom">Ã°Å¸â€Â</div>
       </div>
 
-      <!-- 13 — Stonehills Riders (mid) -->
+      <!-- 13 Ã¢â‚¬â€ Stonehills Riders (mid) -->
       <div class="gal-item" data-cat="motourism" data-index="12" onclick="openLightbox(12)">
-        <div class="gal-placeholder mid">🌾</div>
+        <div class="gal-placeholder mid">Ã°Å¸Å’Â¾</div>
         <img src="Images/Riders.jpg" alt="Stonehills Farm Riders" style="display:none" onload="this.previousElementSibling.style.display='none';this.style.display='block';" />
         <div class="gal-overlay"></div>
         <div class="gal-info">
           <div class="gal-tag">Motourism</div>
           <div class="gal-name">Riders at Stonehills Farm</div>
         </div>
-        <div class="gal-zoom">🔍</div>
+        <div class="gal-zoom">Ã°Å¸â€Â</div>
       </div>
 
-      <!-- 14 — Seafood (short) -->
+      <!-- 14 Ã¢â‚¬â€ Seafood (short) -->
       <div class="gal-item" data-cat="food" data-index="13" onclick="openLightbox(13)">
-        <div class="gal-placeholder short">🦞</div>
+        <div class="gal-placeholder short">Ã°Å¸Â¦Å¾</div>
         <img src="Images/Kabug.jpg" alt="Fresh Seafood" style="display:none" onload="this.previousElementSibling.style.display='none';this.style.display='block';" />
         <div class="gal-overlay"></div>
         <div class="gal-info">
           <div class="gal-tag">Food</div>
           <div class="gal-name">Kabug Mangroves and Wetlands</div>
         </div>
-        <div class="gal-zoom">🔍</div>
+        <div class="gal-zoom">Ã°Å¸â€Â</div>
       </div>
 
-      <!-- 15 — Capitol (short) -->
+      <!-- 15 Ã¢â‚¬â€ Capitol (short) -->
       <div class="gal-item" data-cat="heritage" data-index="14" onclick="openLightbox(14)">
-        <div class="gal-placeholder short">🏛️</div>
+        <div class="gal-placeholder short">Ã°Å¸Ââ€ºÃ¯Â¸Â</div>
         <img src="Images/Zamboanga Sibugay Capitol.jpg" alt="Capitol" style="display:none" onload="this.previousElementSibling.style.display='none';this.style.display='block';" />
         <div class="gal-overlay"></div>
         <div class="gal-info">
           <div class="gal-tag">Landmark</div>
           <div class="gal-name">Zamboanga Sibugay Capitol</div>
         </div>
-        <div class="gal-zoom">🔍</div>
+        <div class="gal-zoom">Ã°Å¸â€Â</div>
       </div>
 
     </div>
   </div>
 
-  <!-- ── LIGHTBOX ── -->
+  <!-- Ã¢â€â‚¬Ã¢â€â‚¬ LIGHTBOX Ã¢â€â‚¬Ã¢â€â‚¬ -->
   <div class="lightbox" id="lightbox" onclick="closeLightboxOnBg(event)">
     <div class="lb-inner">
       <div class="lb-counter" id="lbCounter">1 / 15</div>
-      <button class="lb-close" onclick="closeLightbox()">✕</button>
-      <button class="lb-nav lb-prev" onclick="lbNav(-1)">‹</button>
-      <button class="lb-nav lb-next" onclick="lbNav(1)">›</button>
+      <button class="lb-close" onclick="closeLightbox()">Ã¢Å“â€¢</button>
+      <button class="lb-nav lb-prev" onclick="lbNav(-1)">Ã¢â‚¬Â¹</button>
+      <button class="lb-nav lb-next" onclick="lbNav(1)">Ã¢â‚¬Âº</button>
       <div class="lb-img-wrap" id="lbImgWrap">
         <span id="lbEmoji" style="font-size:8rem;"></span>
         <img id="lbImg" src="" alt="" style="display:none" />
@@ -564,7 +521,7 @@
     </div>
   </div>
 
-  <!-- ── CTA ── -->
+  <!-- Ã¢â€â‚¬Ã¢â€â‚¬ CTA Ã¢â€â‚¬Ã¢â€â‚¬ -->
   <div class="cta-band">
     <div class="cta-fb"></div>
     <div class="cta-ov"></div>
@@ -575,7 +532,7 @@
     </div>
   </div>
 
-  <!-- ── FOOTER ── -->
+  <!-- Ã¢â€â‚¬Ã¢â€â‚¬ FOOTER Ã¢â€â‚¬Ã¢â€â‚¬ -->
   <footer class="footer">
     <div class="footer-brand"><span class="s">SIBUG</span><span class="n">NGARI</span></div>
     <div class="footer-tag">Discover Zamboanga Sibugay</div>
@@ -591,7 +548,7 @@
   </footer>
 
   <script>
-    /* ══ HAMBURGER MENU ══ */
+    /* Ã¢â€¢ÂÃ¢â€¢Â HAMBURGER MENU Ã¢â€¢ÂÃ¢â€¢Â */
     const hamburger = document.getElementById('hamburger');
     const mobileNav = document.getElementById('mobileNav');
     const navOverlay = document.getElementById('navOverlay');
@@ -619,7 +576,7 @@
       link.addEventListener('click', () => toggleMenu(false));
     });
 
-    /* ══ ACTIVE NAV LINK ══ */
+    /* Ã¢â€¢ÂÃ¢â€¢Â ACTIVE NAV LINK Ã¢â€¢ÂÃ¢â€¢Â */
     function setActiveNav() {
       const currentPage = window.location.pathname.split('/').pop() || 'index.html';
       document.querySelectorAll('.nav-links a, .mobile-nav a').forEach(link => {
@@ -632,23 +589,23 @@
     }
     setActiveNav();
 
-    // ── GALLERY DATA ──
+    // Ã¢â€â‚¬Ã¢â€â‚¬ GALLERY DATA Ã¢â€â‚¬Ã¢â€â‚¬
     const photos = [
-      { emoji:'', img:'Images/Buluan.jpg',    tag:'Beach',      name:'Buluan Island',                loc:'📍 Ipil, Zamboanga Sibugay' },
-      { emoji:'', img:'Images/Stonehills.jpg',        tag:'Eco-Farm',   name:'Stonehills Farm',              loc:'📍 Tungawan, Zamboanga Sibugay' },
-      { emoji:'', img:'Images/Gacbusan falls.jpg',        tag:'Nature',     name:'Naga Falls',                   loc:'📍 Kabasalan, Zamboanga Sibugay' },
-      { emoji:'', img:'Images/Festivals.jpg',         tag:'Culture',    name:'Cultural Festival',            loc:'📍 Zamboanga Sibugay' },
-      { emoji:'', img:'Images/Muyong Island.jpg',     tag:'Beach',      name:'Muyong Island',                loc:'📍 Malangas, Zamboanga Sibugay' },
-      { emoji:'', img:'Images/moto-ride.jpg',         tag:'Motourism',  name:'Riding the Province',          loc:'📍 Zamboanga Sibugay' },
-      { emoji:'', img:'Images/malangas.jpg',          tag:'Heritage',   name:'Malangas Coal Mines',          loc:'📍 Malangas, Zamboanga Sibugay' },
-      { emoji:'', img:'Images/ipil-beach.jpg',        tag:'Beach',      name:'Ipil Beach',                   loc:'📍 Ipil, Zamboanga Sibugay' },
-      { emoji:'', img:'Images/local-food.jpg',        tag:'Food',       name:'Local Cuisine',                loc:'📍 Zamboanga Sibugay' },
-      { emoji:'', img:'Images/Cathedral of Saint Joseph the Worker.jpg',            tag:'Heritage',   name:'Cathedral of Saint Joseph the Worker',  loc:'📍 Ipil, Zamboanga Sibugay' },
-      { emoji:'', img:'Images/Pandilusan Island.jpg',         tag:'Coastline',  name:'Pandilusan Island',             loc:'📍 Payao, Zamboanga Sibugay' },
-      { emoji:'', img:'Images/Subanen Indigenous Crafts.jpg',   tag:'Culture',    name:'Subanen Indigenous Crafts',    loc:'📍 Zamboanga Sibugay' },
-      { emoji:'', img:'Images/stonehills-moto.jpg',   tag:'Motourism',  name:'Riders at Stonehills Farm',    loc:'📍 Tungawan, Zamboanga Sibugay' },
-      { emoji:'', img:'Images/Kabug.jpg',           tag:'Food',       name:'Kabug Mangroves and Wetlands',      loc:'📍 Brgy. Laih, Siay, Zamboanga Sibugay' },
-      { emoji:'', img:'Images/Zamboanga Sibugay Capitol.jpg',           tag:'Landmark',   name:'Zamboanga Sibugay Capitol',    loc:'📍 Ipil, Zamboanga Sibugay' },
+      { emoji:'', img:'Images/Buluan.jpg',    tag:'Beach',      name:'Buluan Island',                loc:'Ã°Å¸â€œÂ Ipil, Zamboanga Sibugay' },
+      { emoji:'', img:'Images/Stonehills.jpg',        tag:'Eco-Farm',   name:'Stonehills Farm',              loc:'Ã°Å¸â€œÂ Tungawan, Zamboanga Sibugay' },
+      { emoji:'', img:'Images/Gacbusan falls.jpg',        tag:'Nature',     name:'Naga Falls',                   loc:'Ã°Å¸â€œÂ Kabasalan, Zamboanga Sibugay' },
+      { emoji:'', img:'Images/Festivals.jpg',         tag:'Culture',    name:'Cultural Festival',            loc:'Ã°Å¸â€œÂ Zamboanga Sibugay' },
+      { emoji:'', img:'Images/Muyong Island.jpg',     tag:'Beach',      name:'Muyong Island',                loc:'Ã°Å¸â€œÂ Malangas, Zamboanga Sibugay' },
+      { emoji:'', img:'Images/moto-ride.jpg',         tag:'Motourism',  name:'Riding the Province',          loc:'Ã°Å¸â€œÂ Zamboanga Sibugay' },
+      { emoji:'', img:'Images/malangas.jpg',          tag:'Heritage',   name:'Malangas Coal Mines',          loc:'Ã°Å¸â€œÂ Malangas, Zamboanga Sibugay' },
+      { emoji:'', img:'Images/ipil-beach.jpg',        tag:'Beach',      name:'Ipil Beach',                   loc:'Ã°Å¸â€œÂ Ipil, Zamboanga Sibugay' },
+      { emoji:'', img:'Images/local-food.jpg',        tag:'Food',       name:'Local Cuisine',                loc:'Ã°Å¸â€œÂ Zamboanga Sibugay' },
+      { emoji:'', img:'Images/Cathedral of Saint Joseph the Worker.jpg',            tag:'Heritage',   name:'Cathedral of Saint Joseph the Worker',  loc:'Ã°Å¸â€œÂ Ipil, Zamboanga Sibugay' },
+      { emoji:'', img:'Images/Pandilusan Island.jpg',         tag:'Coastline',  name:'Pandilusan Island',             loc:'Ã°Å¸â€œÂ Payao, Zamboanga Sibugay' },
+      { emoji:'', img:'Images/Subanen Indigenous Crafts.jpg',   tag:'Culture',    name:'Subanen Indigenous Crafts',    loc:'Ã°Å¸â€œÂ Zamboanga Sibugay' },
+      { emoji:'', img:'Images/stonehills-moto.jpg',   tag:'Motourism',  name:'Riders at Stonehills Farm',    loc:'Ã°Å¸â€œÂ Tungawan, Zamboanga Sibugay' },
+      { emoji:'', img:'Images/Kabug.jpg',           tag:'Food',       name:'Kabug Mangroves and Wetlands',      loc:'Ã°Å¸â€œÂ Brgy. Laih, Siay, Zamboanga Sibugay' },
+      { emoji:'', img:'Images/Zamboanga Sibugay Capitol.jpg',           tag:'Landmark',   name:'Zamboanga Sibugay Capitol',    loc:'Ã°Å¸â€œÂ Ipil, Zamboanga Sibugay' },
     ];
 
     let currentIndex = 0;
@@ -708,7 +665,7 @@
       if (e.key === 'Escape')     closeLightbox();
     });
 
-    // ── FILTER ──
+    // Ã¢â€â‚¬Ã¢â€â‚¬ FILTER Ã¢â€â‚¬Ã¢â€â‚¬
     function filterGallery(cat, btn) {
       document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
