@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta charset="UTF-8" />
   <title>SIBUGNGARI - Discover Zamboanga Sibugay</title>
-  <link rel="icon" type="image/png" href="Images/LOGO.png" />
+  <link rel="icon" type="image/png" href="Images/LOGO-removebg-preview.png" />
   <style>
     :root {
       --brown: #7a3b10;
@@ -72,13 +72,15 @@
       align-items: center;
       gap: 10px;
       flex-shrink: 0;
+      min-height: 44px;
     }
 
     .nav-logo img {
-      height: 36px;
-      width: 36px;
+      height: 42px;
+      width: auto;
       object-fit: contain;
-      border-radius: 50%;
+      display: block;
+      border-radius: 0;
     }
 
     .nav-brand {
@@ -86,6 +88,9 @@
       font-size: clamp(1.1rem, 3vw, 1.5rem);
       font-weight: 700;
       white-space: nowrap;
+      display: flex;
+      align-items: center;
+      line-height: 1;
     }
 
     .nav-brand .s {
@@ -104,6 +109,8 @@
     }
 
     .nav-links a {
+      display: inline-flex;
+      align-items: center;
       font-size: clamp(0.75rem, 1.2vw, 0.85rem);
       font-weight: 500;
       color: #555;
@@ -111,6 +118,7 @@
       border-radius: 6px;
       transition: all .18s;
       white-space: nowrap;
+      min-height: 38px;
       position: relative;
       z-index: 0;
       overflow: hidden;
@@ -783,16 +791,20 @@
 
     .media-grid {
       display: grid;
-      grid-template-columns: repeat(2, 530px);
+      grid-template-columns: repeat(2, minmax(280px, 1fr));
       gap: clamp(24px, 3vw, 36px);
       align-items: stretch;
       justify-content: center;
+      max-width: 1120px;
+      margin: 0 auto;
     }
 
     .video-panel,
     .weather-panel {
-      width: 530px;
-      height: 760px;
+      width: 100%;
+      max-width: 530px;
+      height: clamp(520px, 68vw, 760px);
+      justify-self: center;
     }
 
     .video-panel {
@@ -871,7 +883,7 @@
 
     .weather-main {
       flex: 1;
-      min-width: 220px;
+      min-width: min(220px, 100%);
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -929,7 +941,7 @@
 
     .weather-details {
       flex: 1.5;
-      min-width: 240px;
+      min-width: min(240px, 100%);
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
       gap: 12px;
@@ -960,7 +972,7 @@
 
     .weather-forecast {
       flex: 2;
-      min-width: 300px;
+      min-width: min(300px, 100%);
       display: flex;
       gap: 10px;
       flex-wrap: wrap;
@@ -1715,6 +1727,18 @@
     }
 
     /* ══ RESPONSIVE BREAKPOINTS ══ */
+    @media (max-width: 1200px) {
+      .media-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .video-panel,
+      .weather-panel {
+        max-width: none;
+        height: clamp(500px, 62vw, 720px);
+      }
+    }
+
     @media (max-width: 900px) {
       .nav-links {
         display: none;
@@ -1731,6 +1755,7 @@
       .video-panel,
       .weather-panel {
         width: 100%;
+        max-width: 680px;
         height: auto;
       }
 
@@ -1743,9 +1768,28 @@
         margin-right: auto;
       }
 
+      .video-embed-container {
+        aspect-ratio: 16 / 10;
+        height: auto;
+      }
+
+      .weather-widget-box {
+        padding: 22px;
+      }
+
     }
 
     @media (max-width: 600px) {
+      .hero-content {
+        max-width: 100%;
+        padding-bottom: 120px;
+      }
+
+      .hero-btns a {
+        width: 100%;
+        text-align: center;
+      }
+
       .hero-strip {
         flex-wrap: wrap;
       }
@@ -1763,9 +1807,19 @@
         border-bottom: none;
       }
 
+      .weather-widget-box {
+        gap: 16px;
+      }
+
+      .weather-main,
+      .weather-details,
+      .weather-forecast {
+        min-width: 0;
+        width: 100%;
+      }
+
       .stops-list {
-        padding-left: 0;/
-        
+        padding-left: 0;
       }
 
       .stops-list::before {
@@ -1793,6 +1847,25 @@
       }
     }
 
+    @media (max-width: 480px) {
+      .strip-item {
+        flex: 0 0 100%;
+        border-right: none;
+      }
+
+      .strip-item:nth-last-child(-n+2) {
+        border-bottom: 1px solid rgba(0, 0, 0, .07);
+      }
+
+      .strip-item:last-child {
+        border-bottom: none;
+      }
+
+      .forecast-day {
+        min-width: calc(50% - 5px);
+      }
+    }
+
     /* Overlay when mobile menu open */
     .nav-overlay {
       display: none;
@@ -1814,7 +1887,7 @@
   <!-- ══ NAVBAR ══ -->
   <nav class="navbar">
     <div class="nav-logo">
-      <img src="Images/LOGO.png" alt="SIBUGNGARI" />
+      <img src="Images/LOGO-removebg-preview.png" alt="SIBUGNGARI" />
       <div class="nav-brand"><span class="s">SIBUG</span><span class="n">NGARI</span></div>
     </div>
     <!-- Desktop links -->
